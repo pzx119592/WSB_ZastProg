@@ -1,0 +1,55 @@
+Temat 2, ćwiczenie 2 — pierwszy projekt Laravel 12
+
+Projekt: project_1. Sprawdzona wersja: Laravel Framework 12.69.3, PHP 8.2.12.
+Repozytorium: https://github.com/pzx119592/WSB_ZastProg
+Dokumentacja: https://laravel.com/docs/12.x/installation
+
+POBRANIE NA KOMPUTERZE UCZELNIANYM
+1. Na komputerze muszą być XAMPP z PHP 8.2 lub nowszym, Composer i VS Code.
+2. Otwórz repozytorium, kliknij Code -> Download ZIP i rozpakuj archiwum.
+3. Skopiuj jego folder project_1 do C:\xampp\htdocs.
+   Plik artisan powinien być w C:\xampp\htdocs\project_1\artisan.
+   Jeśli project_1 już istnieje, zachowaj kopię swoich plików przed zastąpieniem.
+
+PIERWSZE URUCHOMIENIE — polecenia w PowerShell
+cd C:\xampp\htdocs\project_1
+$env:Path = "C:\xampp\php;" + $env:Path
+php --version
+composer --version
+composer install
+if (!(Test-Path .env)) { Copy-Item .env.example .env }
+php artisan key:generate
+if (!(Test-Path database\database.sqlite)) { New-Item database\database.sqlite -ItemType File | Out-Null }
+php artisan migrate
+php artisan --version
+php artisan serve --host=127.0.0.1 --port=8000
+
+Otwórz http://127.0.0.1:8000 — powinna pojawić się strona powitalna Laravel.
+Pozostaw terminal z serwerem otwarty. Ctrl+C zatrzymuje serwer.
+Przy kolejnych uruchomieniach wystarczy wejść do folderu i wykonać php artisan serve.
+Gdy port 8000 jest zajęty, użyj --port=8001 i adresu http://127.0.0.1:8001.
+Jeśli XAMPP ma inną lokalizację, dostosuj ścieżki powyżej.
+
+Projekt korzysta z domyślnego SQLite; plik bazy i tabele powstają lokalnie.
+Przy php artisan serve nie trzeba uruchamiać Apache ani MariaDB.
+Do domyślnej strony powitalnej nie są potrzebne npm ani Node.js.
+composer install odtwarza wersje z composer.lock; nie używaj composer update.
+Plik .env, baza SQLite i folder vendor nie są przesyłane na GitHub.
+
+EDYTOR I STRUKTURA PROJEKTU
+Otwórz VS Code -> File -> Open Folder -> C:\xampp\htdocs\project_1.
+W panelu Explorer rozwiń katalogi i otwórz routes\web.php.
+app\Models — modele (dane); app\Http\Controllers — kontrolery (obsługa żądań).
+resources\views — widoki Blade; routes — adresy URL aplikacji.
+bootstrap — uruchamianie frameworka; config — konfiguracja.
+database — migracje, fabryki i seedery; public — publiczny punkt wejścia.
+storage — logi i pliki robocze; tests — testy; vendor — biblioteki Composera.
+
+routes/web.php zawiera trasę GET /, która zwraca view('welcome').
+Adres / wyświetla więc resources/views/welcome.blade.php.
+Na tym etapie trasa korzysta z funkcji anonimowej, bez osobnego kontrolera.
+
+POLECENIE UŻYTE DO UTWORZENIA PROJEKTU W DOMU
+composer create-project "laravel/laravel:^12.0" project_1
+To odpowiednik tworzenia projektu instalatorem Laravel z jawnym wyborem wersji 12.
+Na uczelni pobierz gotowy projekt i użyj composer install, zamiast tworzyć go od nowa.
