@@ -27,6 +27,7 @@
 | 02 | 06 | 6 | [Walidacja pól formularza](lekcje/lekcja_02/temat_06/cwiczenie_06.txt) | `http://127.0.0.1:8000/userform` — ograniczenia pól i hasła |
 | 02 | 07 | 7A | [Dodawanie użytkowników do bazy](lekcje/lekcja_02/temat_07/cwiczenie_07a_uzytkownicy.txt) | `http://127.0.0.1:8000/adduser` — zapis i wynik JSON |
 | 02 | 07 | 7B | [Faker i sprawdzanie książek](lekcje/lekcja_02/temat_07/cwiczenie_07b_faker.txt) | `http://127.0.0.1:8000/books`, `/check` |
+| 02 | 08 | 8 | [Autoryzacja i panel AdminLTE 3](lekcje/lekcja_02/temat_08/cwiczenie_08.txt) | `/register`, `/login`, `/home`, `/panel/formularz` |
 
 [Opis lekcji 02](lekcje/lekcja_02/README.md) · [Temat 05 — Wykorzystanie formularzy](lekcje/lekcja_02/temat_05/README.md) · [Temat 06 — Walidacja danych](lekcje/lekcja_02/temat_06/README.md)
 
@@ -36,13 +37,15 @@ Numeracja tematu 05 jest zgodna z materiałami prowadzącego. Nie przypisano zad
 
 ## Gdzie jest kod?
 
+[Temat 08 — Autoryzacja](lekcje/lekcja_02/temat_08/README.md): rejestracja i logowanie do panelu AdminLTE 3. Na uczelni utwórz konto przez `/register`; publiczna kopia SQL nie zawiera kont. Zasoby panelu instaluje automatycznie `composer install`.
+
 [Kopia przykładowych danych i instrukcja importu w phpMyAdmin](baza/instrukcja_importu.txt) pozwalają przenieść na uczelnię te same książki i przykładowego użytkownika. Najpierw wykonaj migracje, potem import SQL zamiast zwykłego seedera.
 
 | Lokalizacja w repozytorium | Zastosowanie | Katalog na komputerze |
 |---|---|---|
 | [pierwszy_skrypt/](pierwszy_skrypt/) | Pierwszy skrypt PHP | `C:\xampp\htdocs\pierwszy_skrypt` |
 | [index.php](index.php) w głównym katalogu | Prosty projekt z zadania GitHub | `C:\xampp\htdocs\git\project1` |
-| [project_1/](project_1/) | Wspólny projekt Laravel 12: tematy 02, 03, 05, 06 i 07 | `C:\xampp\htdocs\project_1` |
+| [project_1/](project_1/) | Wspólny projekt Laravel 12: tematy 02, 03, 05, 06, 07 i 08 | `C:\xampp\htdocs\project_1` |
 | [xampp/](xampp/) | Instrukcja środowiska | Instalacja XAMPP |
 | [lekcje/](lekcje/) | Spis i instrukcje wszystkich zadań | Dokumentacja |
 

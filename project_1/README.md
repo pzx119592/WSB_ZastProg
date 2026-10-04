@@ -10,6 +10,7 @@ Projekt z przedmiotu **Programowanie w zastosowaniach**. Laravel Framework 12.69
 - [Lekcja 02, temat 05 — formularz użytkownika](../lekcje/lekcja_02/temat_05/README.md).
 - [Lekcja 02, temat 06 — walidacja danych](../lekcje/lekcja_02/temat_06/README.md).
 - [Lekcja 02, temat 07 — dodawanie użytkowników i Faker](../lekcje/lekcja_02/temat_07/README.md).
+- [Lekcja 02, temat 08 — autoryzacja i AdminLTE 3](../lekcje/lekcja_02/temat_08/README.md).
 
 ## Uruchomienie
 
@@ -29,3 +30,5 @@ Formularz z ćwiczenia 5: `http://127.0.0.1:8000/userform`. Dane są wysyłane m
 Projekt używa teraz MariaDB: uruchom MySQL w XAMPP i utwórz bazę `project` przed migracjami. Zobacz [instrukcję bazy](instrukcja_temat_7a.txt). Dodawanie użytkowników: `/adduser`; książki: `/books`; sprawdzanie tytułu: `/check`.
 
 [Główny spis wszystkich zadań](../README.md) · [Zbiorcza instrukcja tematu 03](instrukcja_temat_3.txt).
+
+Rejestracja i logowanie: `/register` i `/login`. Chroniony panel AdminLTE 3: `/home`, formularz: `/panel/formularz`. [Instrukcja tematu 8](instrukcja_temat_8.txt) zawiera pełny scenariusz prezentacji. `composer install` publikuje lokalne zasoby panelu; na uczelni zarejestruj własne konto.

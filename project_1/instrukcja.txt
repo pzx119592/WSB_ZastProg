@@ -1,4 +1,4 @@
-Tematy 2, 3, 5, 6 i 7 — projekt Laravel 12
+Tematy 2, 3, 5, 6, 7 i 8 — projekt Laravel 12
 
 AKTUALNA BAZA PO TEMACIE 7
 Obecna wersja projektu korzysta z MariaDB. Włącz MySQL w XAMPP.
@@ -70,6 +70,9 @@ Wymagania i przykłady do pokazania są w instrukcja_temat_6.txt.
 Temat 7: /adduser dodaje użytkownika do MariaDB, /user-records pokazuje zapisane rekordy.
 Książki z Fakerem: /books i /check. Najpierw uruchom seeder według instrukcji.
 Szczegóły i adresy do pokazania są w instrukcja_temat_7a.txt i instrukcja_temat_7b.txt.
+Temat 8: /register, /login i chroniony panel /home z formularzem /panel/formularz.
+Szczegóły są w instrukcja_temat_8.txt. Composer automatycznie publikuje AdminLTE.
+Konta logowania utwórz lokalnie; nie są zawarte w publicznej kopii SQL.
 
 POLECENIE UŻYTE DO UTWORZENIA PROJEKTU W DOMU
 composer create-project "laravel/laravel:^12.0" project_1

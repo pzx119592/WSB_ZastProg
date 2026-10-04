@@ -1,0 +1,93 @@
+Lekcja 02 | Temat 08 | Ćwiczenie 8 — autoryzacja i AdminLTE 3
+
+POBRANIE I URUCHOMIENIE NA KOMPUTERZE UCZELNIANYM
+1. XAMPP z PHP 8.2+, Composer. Włącz MySQL/MariaDB, a dla phpMyAdmin też Apache.
+2. https://github.com/pzx119592/WSB_ZastProg -> Code -> Download ZIP.
+   Rozpakuj, skopiuj folder project_1 do C:\xampp\htdocs.
+   Zachowaj kopię swojego istniejącego projektu przed zastąpieniem plików.
+3. http://localhost/phpmyadmin -> SQL:
+   CREATE DATABASE IF NOT EXISTS project CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+4. PowerShell:
+
+cd C:\xampp\htdocs\project_1
+$env:Path = "C:\xampp\php;" + $env:Path
+composer install
+if (!(Test-Path .env)) { Copy-Item .env.example .env }
+
+5. Dla nowego .env wykonaj php artisan key:generate. Przy aktualizacji działającego
+   projektu zachowaj istniejący APP_KEY. Sprawdź w .env:
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=project
+DB_USERNAME=root
+DB_PASSWORD=
+
+Dostosuj nazwę bazy, konto, hasło i port do instalacji na uczelni.
+6. W terminalu:
+
+php artisan config:clear
+php artisan migrate
+php artisan --version
+php artisan serve --host=127.0.0.1 --port=8000
+
+Pozostaw terminal otwarty. Ctrl+C zatrzymuje serwer. Przy kolejnym uruchomieniu
+włącz MariaDB i wykonaj artisan serve. Dla zajętego portu wybierz --port=8001.
+Composer pobiera pakiety i automatycznie publikuje lokalne zasoby AdminLTE.
+Jeśli pominięto skrypty Composera lub CSS nie działa, wykonaj:
+php artisan adminlte:install --only=assets --no-interaction
+Do instalacji Composer wymaga Internetu; po niej panel korzysta z lokalnych
+CSS, JavaScript, ikon i logo. Nie potrzeba npm, Node.js ani kompilowania Vite.
+
+ADRESY DO POKAZANIA
+http://127.0.0.1:8000/register — rejestracja nowego konta.
+http://127.0.0.1:8000/login — logowanie na istniejące konto.
+http://127.0.0.1:8000/home — panel AdminLTE 3 (wymaga logowania).
+http://127.0.0.1:8000/panel/formularz — formularz imienia i nazwiska w panelu.
+http://localhost/phpmyadmin — baza project, tabela users z kontami.
+Przez Apache np. http://localhost/project_1/public/login.
+
+SCENARIUSZ PREZENTACJI
+1. Wejdź na /home bez logowania: zostaniesz przekierowany do /login.
+2. Otwórz /register. Podaj np. Student Testowy, student8@example.test,
+   hasło testowe Testowe123! i powtórz je. Nie używaj tu swojego prawdziwego hasła.
+3. Po rejestracji zaloguj się na /login. Pojawi się /home i nazwa Twojego konta.
+   Jeżeli testowy e-mail już istnieje, zaloguj się lub zarejestruj innym adresem.
+4. Pokaż logo WSB Merito i uproszczone menu po lewej; wybierz Formularz.
+5. Wpisz Anna i Nowak, kliknij Wyślij. Wynik: Imię i nazwisko: Anna Nowak.
+   To dane wysłane metodą POST; ten formularz nie zapisuje nowego konta w bazie.
+6. Kliknij ikonę wylogowania w prawym górnym rogu. Otwiera się menu z Logout,
+   jak na obrazku w PDF. Kliknij Logout: wylogowanie odbywa się metodą POST.
+7. Ponowne wejście na /home znów prowadzi do logowania. Zaloguj się ponownie,
+   aby pokazać, że zarejestrowane konto pozostaje w bazie.
+8. W phpMyAdmin -> project -> users -> Przeglądaj zobacz konto. Password zawiera
+   hash (np. $2y$...), a nie jawne hasło. Nie modyfikuj ręcznie jego wartości.
+
+PLIKI DO POKAZANIA W EDYTORZE
+app/Http/Controllers/AuthController.php — rejestracja, Auth::attempt, wylogowanie.
+app/Models/User.php — istniejący model kont z hashowaniem hasła.
+database/migrations/0001_01_01_000000_create_users_table.php — wbudowana migracja.
+routes/web.php — trasy auth/guest oraz POST formularza i logout.
+resources/views/auth/login.blade.php i register.blade.php — formularze z @csrf.
+resources/views/layouts/panel.blade.php — logo, menu i rozwijane Logout.
+resources/views/panel/form.blade.php i result.blade.php — name, surname i wynik.
+app/Http/Controllers/PanelController.php — walidacja i wynik formularza.
+composer.json, composer.lock — Laravel i AdminLTE z ustalonymi wersjami.
+
+ZGODNOŚĆ ZE STARSZYM PDF
+PDF mówi o nowym projekcie w Laravel 7 (ówczesna najnowsza wersja).
+Na zajęciach używamy Laravel 12: ćwiczenie wykonano w istniejącym project_1,
+zachowując poprzednie zadania. Sprawdzona wersja: Laravel Framework 12.69.3.
+AdminLTE jest w wymaganej wersji 3.2.0, integracja jeroennoten 3.15.0.
+Wbudowana tabela users już istniała z tematu 7; migrate odtwarza ją na uczelni.
+users to konta logowania; user (bez s) to osobne rekordy ćwiczenia 7A.
+
+KOPIA BAZY I KONTA
+Plik baza/temat_07_dane_przykladowe.sql nadal służy do rekordów user i books.
+Nie zawiera kont users: na uczelni utwórz konto przez /register.
+Kont, hashy haseł, sesji i lokalnego .env nie publikujemy na GitHubie.
+Nie uruchamiaj migrate:fresh na swojej bazie — usuwa istniejące tabele i dane.
+
+TESTY
+php artisan test
+Testy działają na osobnej bazie SQLite w pamięci, bez zmiany domowej bazy project.

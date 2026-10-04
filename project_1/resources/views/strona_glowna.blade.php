@@ -21,6 +21,11 @@
             <a href="{{ route('adduser') }}">Dodawanie użytkownika</a>
             <a href="{{ route('books') }}">Książki</a>
             <a href="{{ route('books.check') }}">Sprawdzenie książki</a>
+            <a href="{{ route('home') }}">Panel użytkownika</a>
+            @guest
+                <a href="{{ route('register') }}">Rejestracja</a>
+                <a href="{{ route('login') }}">Logowanie</a>
+            @endguest
         </nav>
     </main>
 </body>
