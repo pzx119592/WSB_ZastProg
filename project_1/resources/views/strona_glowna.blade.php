@@ -59,6 +59,13 @@
                 <a href="{{ route('topic9.tests.list') }}">Użytkownicy z tabeli tests — e24_v1</a>
             </nav>
         </section>
+        <section>
+            <h2>Temat 10 — API</h2>
+            <nav aria-label="Ćwiczenia tematu 10">
+                <a href="{{ route('topic10.rates') }}">Kursy walut NBP</a>
+                <a href="{{ route('topic10.calculator') }}">Kalkulator walut</a>
+            </nav>
+        </section>
     </main>
 </body>
 </html>

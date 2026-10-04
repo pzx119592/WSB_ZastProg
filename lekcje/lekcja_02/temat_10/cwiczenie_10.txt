@@ -1,0 +1,60 @@
+Lekcja 02 | Temat 10 | Ćwiczenie 10 — API NBP (e10.pdf)
+
+POBRANIE I URUCHOMIENIE NA UCZELNI
+1. Wymagane: XAMPP (PHP 8.2+ i MariaDB), Composer oraz Internet.
+2. https://github.com/pzx119592/WSB_ZastProg -> Code -> Download ZIP.
+   Skopiuj folder project_1 do C:\xampp\htdocs.
+   Przy aktualizacji zachowaj własny .env i lokalne dane.
+3. Włącz MySQL w XAMPP. Dla phpMyAdmin włącz także Apache.
+   http://localhost/phpmyadmin -> utwórz bazę project (utf8mb4), jeśli jej nie ma.
+4. PowerShell:
+
+cd C:\xampp\htdocs\project_1
+$env:Path = "C:\xampp\php;" + $env:Path
+composer install
+if (!(Test-Path .env)) { Copy-Item .env.example .env }
+
+5. W .env ustaw dane MariaDB komputera uczelnianego:
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=project
+DB_USERNAME=root
+DB_PASSWORD=
+   Jeśli konto root ma hasło, wpisz je. Dla NOWEGO .env wykonaj:
+php artisan key:generate
+   Przy aktualizacji zachowaj dotychczasowy APP_KEY.
+6. W terminalu:
+php artisan config:clear
+php artisan migrate
+php artisan serve --host=127.0.0.1 --port=8000
+   Pozostaw terminal otwarty. Ctrl+C zatrzymuje serwer.
+   Przy kolejnych uruchomieniach wystarczy MySQL i php artisan serve.
+   Nie potrzeba npm. Nie używaj migrate:fresh: usuwa wcześniejsze dane.
+
+ADRESY DO POKAZANIA
+http://127.0.0.1:8000/kursy
+Tabela kupna (skupu) i sprzedaży EUR, CHF i USD, numer i data tabeli NBP.
+http://127.0.0.1:8000/kalkulatorwalut
+Wpisz 200, zaznacz CHF i kliknij Przelicz. Pod formularzem pojawi się:
+"Za kwotę 200,00 zł można zakupić [liczba całkowita] chf."
+Wynik zależy od rzeczywistego kursu NBP. Przykład 50 chf w PDF nie jest stały.
+http://127.0.0.1:8000/ — linki pod nagłówkiem Temat 10 — API.
+Przez Apache: http://localhost/project_1/public/kursy oraz
+http://localhost/project_1/public/kalkulatorwalut.
+
+JAK DZIAŁA / PLIKI DO POKAZANIA W VS CODE
+app/Services/NbpApi.php — Http::get pobiera JSON z tabeli C NBP przez HTTPS:
+https://api.nbp.pl/api/exchangerates/tables/C/
+app/Http/Controllers/CurrencyController.php — walidacja i obliczenie wyniku.
+Kupujemy walutę za PLN: kwota / kurs SPRZEDAŻY (ask), zaokrąglenie w dół.
+Kwota przyjmuje kropkę lub przecinek i maksymalnie 2 miejsca po przecinku.
+resources/views/currency/rates.blade.php — tabela z bid i ask.
+resources/views/currency/calculator.blade.php — formularz POST z @csrf i wynik.
+routes/web.php — GET /kursy, GET i POST /kalkulatorwalut.
+Nie dodajemy tabel do bazy: dane pochodzą z NBP i nie wymagają kopii SQL.
+W weekend wyświetla się ostatnia opublikowana tabela wraz z jej datą.
+Bez Internetu formularz się otworzy, ale kursy i wynik wymagają dostępu do NBP;
+aplikacja pokaże komunikat o błędzie zamiast wymyślonych danych.
+Dokumentacja: https://api.nbp.pl/
+Testy: php artisan test — sprawdzają też błędy API i dokładne zaokrąglanie.

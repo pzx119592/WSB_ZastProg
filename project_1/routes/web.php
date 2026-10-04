@@ -6,6 +6,7 @@ use App\Http\Controllers\PanelController;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\ModelTestController;
+use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\User;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,10 @@ Route::post('/User', [User::class, 'addUser'])->name('user.add');
 Route::get('/user-records', [User::class, 'records'])->name('user.records');
 Route::get('/books', [BooksController::class, 'index'])->name('books');
 Route::get('/check', [BooksController::class, 'check'])->name('books.check');
+
+Route::get('/kursy', [CurrencyController::class, 'rates'])->name('topic10.rates');
+Route::get('/kalkulatorwalut', [CurrencyController::class, 'calculator'])->name('topic10.calculator');
+Route::post('/kalkulatorwalut', [CurrencyController::class, 'convert'])->name('topic10.convert');
 
 Route::prefix('temat-9')->name('topic9.')->group(function () {
     Route::get('/books', [BookController::class, 'index'])->name('books');

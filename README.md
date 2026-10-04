@@ -30,6 +30,7 @@
 | 02 | 08 | 8 | [Autoryzacja i panel AdminLTE 3](lekcje/lekcja_02/temat_08/cwiczenie_08.txt) | `http://127.0.0.1:8000/register` — rejestracja konta<br>`http://127.0.0.1:8000/login` — logowanie<br>`http://127.0.0.1:8000/home` — panel po zalogowaniu i menu Logout<br>`http://127.0.0.1:8000/panel/formularz` — formularz imienia i nazwiska |
 | 02 | 09 | 9A — e24 | [Model Book i lista książek](lekcje/lekcja_02/temat_09/cwiczenie_09a_e24.txt) | `http://127.0.0.1:8000/temat-9/books` — lista 3 książek pobranych przez model Book |
 | 02 | 09 | 9B — e24_v1 | [Formularz i model Test](lekcje/lekcja_02/temat_09/cwiczenie_09b_e24_v1.txt) | `http://127.0.0.1:8000/temat-9/dbTestTableForm` — formularz zapisu do tabeli tests<br>`http://127.0.0.1:8000/temat-9/ModelTestController` — lista zapisanych osób i ich danych |
+| 02 | 10 | 10 | [API NBP i kalkulator walut](lekcje/lekcja_02/temat_10/cwiczenie_10.txt) | `http://127.0.0.1:8000/kursy` — tabela kursów kupna i sprzedaży EUR, CHF, USD<br>`http://127.0.0.1:8000/kalkulatorwalut` — kwota PLN, wybór waluty i wynik w pełnych jednostkach |
 
 [Opis lekcji 02](lekcje/lekcja_02/README.md) · [Temat 05 — Wykorzystanie formularzy](lekcje/lekcja_02/temat_05/README.md) · [Temat 06 — Walidacja danych](lekcje/lekcja_02/temat_06/README.md)
 
@@ -47,7 +48,7 @@ Numeracja tematu 05 jest zgodna z materiałami prowadzącego. Nie przypisano zad
 |---|---|---|
 | [pierwszy_skrypt/](pierwszy_skrypt/) | Pierwszy skrypt PHP | `C:\xampp\htdocs\pierwszy_skrypt` |
 | [index.php](index.php) w głównym katalogu | Prosty projekt z zadania GitHub | `C:\xampp\htdocs\git\project1` |
-| [project_1/](project_1/) | Wspólny projekt Laravel 12: tematy 02, 03, 05, 06, 07, 08 i 09 | `C:\xampp\htdocs\project_1` |
+| [project_1/](project_1/) | Wspólny projekt Laravel 12: tematy 02, 03, 05, 06, 07, 08, 09 i 10 | `C:\xampp\htdocs\project_1` |
 | [xampp/](xampp/) | Instrukcja środowiska | Instalacja XAMPP |
 | [lekcje/](lekcje/) | Spis i instrukcje wszystkich zadań | Dokumentacja |
 
@@ -78,6 +79,8 @@ W kolumnie „Wynik do pokazania po uruchomieniu” podajemy **pełne adresy do 
 **Zachowujemy wcześniejsze ćwiczenia na ich etapie:** kolejne zadanie nie zastępuje istniejących adresów, widoków ani tabel. Przy kolizji nazw nowe zadanie dostaje prefiks tematu, np. `/temat-9/books` i `books_temat9`; wcześniejsze `/books` i `books` nadal pokazują temat 7. Każda wersja ćwiczenia otrzymuje osobną instrukcję.
 
 [Temat 09 — Modele](lekcje/lekcja_02/temat_09/README.md) obejmuje e24, a następnie e24_v1. [Osobna kopia SQL tematu 9](baza/instrukcja_importu_temat_09.txt) odtwarza tylko dane tych ćwiczeń.
+
+[Temat 10 — API](lekcje/lekcja_02/temat_10/README.md): tabela kursów NBP oraz kalkulator PLN → EUR/CHF/USD. Pobieranie kursów wymaga Internetu; nie trzeba importować nowych danych SQL.
 
 Każda kolejna lekcja otrzyma folder `lekcje/lekcja_02`, `lekcja_03` itd. W środku znajdą się tematy i osobne instrukcje ćwiczeń. Spis będzie aktualizowany razem z kodem.
 
