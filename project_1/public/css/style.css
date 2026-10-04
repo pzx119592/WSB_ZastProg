@@ -20,6 +20,10 @@ h1 {
     margin-top: 0;
 }
 
+.home-page h2 {
+    font-size: 20px;
+}
+
 nav {
     display: flex;
     flex-wrap: wrap;
