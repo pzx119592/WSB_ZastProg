@@ -1,4 +1,4 @@
-Temat 2 i temat 3 — projekt Laravel 12
+Tematy 2, 3 i 5 — projekt Laravel 12
 
 Projekt: project_1. Sprawdzona wersja: Laravel Framework 12.69.3, PHP 8.2.12.
 Repozytorium: https://github.com/pzx119592/WSB_ZastProg
@@ -49,6 +49,8 @@ routes/web.php zawiera trasę GET /, która zwraca view('strona_glowna').
 Adres / wyświetla resources/views/strona_glowna.blade.php.
 Trasa /test wywołuje metodę index w TestController.
 Szczegóły ćwiczeń z tematu 3 są w instrukcja_temat_3.txt.
+Lekcja 2, temat 5: /userform pokazuje formularz, POST /form wyświetla jego dane.
+Szczegóły ćwiczenia 5 są w instrukcja_temat_5.txt.
 
 POLECENIE UŻYTE DO UTWORZENIA PROJEKTU W DOMU
 composer create-project "laravel/laravel:^12.0" project_1

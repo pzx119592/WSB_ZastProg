@@ -19,13 +19,23 @@
 
 [Opis lekcji 01](lekcje/lekcja_01/README.md) · [Temat 01](lekcje/lekcja_01/temat_01/README.md) · [Temat 02](lekcje/lekcja_01/temat_02/README.md) · [Temat 03](lekcje/lekcja_01/temat_03/README.md)
 
+## Lekcja 02 — spis zadań
+
+| Lekcja | Temat | Ćwiczenie | Zadanie / instrukcja | Wynik do pokazania po uruchomieniu |
+|---|---|---|---|---|
+| 02 | 05 | 5 | [Formularz użytkownika, POST i CSRF](lekcje/lekcja_02/temat_05/cwiczenie_05.txt) | `http://127.0.0.1:8000/userform` — po zatwierdzeniu dane w widoku wynikowym |
+
+[Opis lekcji 02](lekcje/lekcja_02/README.md) · [Temat 05 — Wykorzystanie formularzy](lekcje/lekcja_02/temat_05/README.md)
+
+Numeracja tematu 05 jest zgodna z materiałami prowadzącego. Nie przypisano zadań do tematu 04.
+
 ## Gdzie jest kod?
 
 | Lokalizacja w repozytorium | Zastosowanie | Katalog na komputerze |
 |---|---|---|
 | [pierwszy_skrypt/](pierwszy_skrypt/) | Pierwszy skrypt PHP | `C:\xampp\htdocs\pierwszy_skrypt` |
 | [index.php](index.php) w głównym katalogu | Prosty projekt z zadania GitHub | `C:\xampp\htdocs\git\project1` |
-| [project_1/](project_1/) | Wspólny projekt Laravel 12: tematy 02 i 03 | `C:\xampp\htdocs\project_1` |
+| [project_1/](project_1/) | Wspólny projekt Laravel 12: tematy 02, 03 i 05 | `C:\xampp\htdocs\project_1` |
 | [xampp/](xampp/) | Instrukcja środowiska | Instalacja XAMPP |
 | [lekcje/](lekcje/) | Spis i instrukcje wszystkich zadań | Dokumentacja |
 
@@ -53,4 +63,4 @@ Pliki środowiska `.env`, biblioteki `vendor` i lokalna baza SQLite powstają na
 
 Każda kolejna lekcja otrzyma folder `lekcje/lekcja_02`, `lekcja_03` itd. W środku znajdą się tematy i osobne instrukcje ćwiczeń. Spis będzie aktualizowany razem z kodem.
 
-Format opisu commita: `Lekcja 02 | Temat 04 | Ćwiczenie 01 — opis zmiany`. Commit obejmujący kilka ćwiczeń będzie wskazywał ich zakres.
+Format opisu commita: `Lekcja 02 | Temat 05 | Ćwiczenie 05 — formularz użytkownika`. Commit obejmujący kilka ćwiczeń będzie wskazywał ich zakres.

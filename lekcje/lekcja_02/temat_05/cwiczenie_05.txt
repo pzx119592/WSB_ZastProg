@@ -1,0 +1,64 @@
+Lekcja 02 | Temat 05 | Ćwiczenie 5 — formularz użytkownika (ex5.pdf)
+
+POBRANIE I PIERWSZE URUCHOMIENIE NA UCZELNI
+1. Wymagane: XAMPP z PHP 8.2 lub nowszym, Composer; zalecany VS Code.
+2. Otwórz https://github.com/pzx119592/WSB_ZastProg
+   Kliknij Code -> Download ZIP i rozpakuj archiwum.
+3. Skopiuj folder project_1 do C:\xampp\htdocs. Zachowaj kopię istniejącego projektu.
+4. W PowerShell wykonaj:
+
+cd C:\xampp\htdocs\project_1
+$env:Path = "C:\xampp\php;" + $env:Path
+composer install
+if (!(Test-Path .env)) { Copy-Item .env.example .env }
+php artisan key:generate
+if (!(Test-Path database\database.sqlite)) { New-Item database\database.sqlite -ItemType File | Out-Null }
+php artisan migrate
+php artisan serve --host=127.0.0.1 --port=8000
+
+Do kolejnego uruchomienia przygotowanego projektu wystarczy wejść do jego folderu
+i wykonać php artisan serve. Terminal serwera pozostaw otwarty; Ctrl+C go zatrzymuje.
+Gdy port jest zajęty, użyj --port=8001 i zmień port w adresach poniżej.
+Jeśli XAMPP ma inną lokalizację, dostosuj ścieżki.
+Do pracy przez Artisan nie trzeba uruchamiać Apache, MariaDB ani npm.
+
+ADRESY DO POKAZANIA
+http://127.0.0.1:8000/userform
+Na swoim komputerze możesz też użyć Apache:
+http://localhost/project_1/public/userform
+Po wysłaniu formularza adres zmienia się na /form (obsługiwany metodą POST).
+Nie otwieraj /form bezpośrednio z paska adresu — byłoby to żądanie GET, a nie POST.
+
+PRZYKŁADOWE DANE
+Imię: Anna
+E-mail: anna@example.com
+Hasło: haslo123
+Płeć: Kobieta
+Kliknij Zatwierdź.
+
+OCZEKIWANY WYNIK
+Widok „Dane z formularza” pokaże imię Anna, e-mail anna@example.com,
+płeć Kobieta oraz osiem kropek zamiast znaków hasła.
+Dane są tablicą w kontrolerze i nie są zapisywane jako użytkownik w bazie danych.
+
+WALIDACJA
+Pola są wymagane. Imię: 2–100 znaków. E-mail: poprawny format, maks. 254 znaki.
+Hasło: 5–100 znaków. Płeć: jedna z dwóch opcji.
+Przeglądarka może zatrzymać błędne dane przed wysłaniem. Kontroler sprawdza je ponownie.
+Po błędzie walidacji serwera formularz pokaże polskie komunikaty i zachowa imię,
+e-mail i wybraną płeć; hasło trzeba wpisać ponownie.
+
+PLIKI DO OTWARCIA W VS CODE (w folderze project_1)
+resources/views/userform.blade.php — formularz POST i @csrf.
+app/Http/Controllers/Form.php — pobranie i walidacja danych do tablicy $data.
+resources/views/form.blade.php — wyświetlanie danych przez {{ ... }}.
+routes/web.php — GET /userform i POST /form.
+public/css/style.css — wygląd formularza i strony wyniku.
+
+POLECENIE UŻYTE DO WYGENEROWANIA KONTROLERA
+php artisan make:controller Form
+
+SPRAWDZENIE
+php artisan route:list --except-vendor
+php artisan test
+Token CSRF jest wymagany — POST bez tokena zwraca HTTP 419.

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Form;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
@@ -12,6 +13,9 @@ Route::get('/witaj', function () {
 });
 
 Route::get('/test', [TestController::class, 'index']);
+
+Route::get('/userform', [Form::class, 'index'])->name('userform');
+Route::post('/form', [Form::class, 'store'])->name('form.submit');
 
 Route::get('/users/{id}', function (string $id) {
     return 'Identyfikator użytkownika: '.e($id);
