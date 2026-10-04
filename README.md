@@ -25,10 +25,14 @@
 |---|---|---|---|---|
 | 02 | 05 | 5 | [Formularz użytkownika, POST i CSRF](lekcje/lekcja_02/temat_05/cwiczenie_05.txt) | `http://127.0.0.1:8000/userform` — po zatwierdzeniu dane w widoku wynikowym |
 | 02 | 06 | 6 | [Walidacja pól formularza](lekcje/lekcja_02/temat_06/cwiczenie_06.txt) | `http://127.0.0.1:8000/userform` — ograniczenia pól i hasła |
+| 02 | 07 | 7A | [Dodawanie użytkowników do bazy](lekcje/lekcja_02/temat_07/cwiczenie_07a_uzytkownicy.txt) | `http://127.0.0.1:8000/adduser` — zapis i wynik JSON |
+| 02 | 07 | 7B | [Faker i sprawdzanie książek](lekcje/lekcja_02/temat_07/cwiczenie_07b_faker.txt) | `http://127.0.0.1:8000/books`, `/check` |
 
 [Opis lekcji 02](lekcje/lekcja_02/README.md) · [Temat 05 — Wykorzystanie formularzy](lekcje/lekcja_02/temat_05/README.md) · [Temat 06 — Walidacja danych](lekcje/lekcja_02/temat_06/README.md)
 
 Numeracja tematu 05 jest zgodna z materiałami prowadzącego. Nie przypisano zadań do tematu 04.
+
+[Temat 07 — Połączenie z bazą i migracje](lekcje/lekcja_02/temat_07/README.md). **Aktualny projekt używa MariaDB**, dlatego na uczelni uruchom MySQL w XAMPP i utwórz bazę `project` zgodnie z instrukcją zadania 7A.
 
 ## Gdzie jest kod?
 
@@ -36,7 +40,7 @@ Numeracja tematu 05 jest zgodna z materiałami prowadzącego. Nie przypisano zad
 |---|---|---|
 | [pierwszy_skrypt/](pierwszy_skrypt/) | Pierwszy skrypt PHP | `C:\xampp\htdocs\pierwszy_skrypt` |
 | [index.php](index.php) w głównym katalogu | Prosty projekt z zadania GitHub | `C:\xampp\htdocs\git\project1` |
-| [project_1/](project_1/) | Wspólny projekt Laravel 12: tematy 02, 03, 05 i 06 | `C:\xampp\htdocs\project_1` |
+| [project_1/](project_1/) | Wspólny projekt Laravel 12: tematy 02, 03, 05, 06 i 07 | `C:\xampp\htdocs\project_1` |
 | [xampp/](xampp/) | Instrukcja środowiska | Instalacja XAMPP |
 | [lekcje/](lekcje/) | Spis i instrukcje wszystkich zadań | Dokumentacja |
 
@@ -58,7 +62,7 @@ Aktualne pliki: **Code → Download ZIP**. Do uruchomienia Laravel skopiuj folde
 - [Wersja z końca lekcji 01](https://github.com/pzx119592/WSB_ZastProg/tree/lekcja-01) · [ZIP lekcji 01](https://github.com/pzx119592/WSB_ZastProg/archive/refs/tags/lekcja-01.zip).
 - [Wersja Laravel z końca tematu 02](https://github.com/pzx119592/WSB_ZastProg/tree/bf44c9b/project_1) — przed zmianą strony głównej w temacie 03.
 
-Pliki środowiska `.env`, biblioteki `vendor` i lokalna baza SQLite powstają na każdym komputerze zgodnie z instrukcją.
+Plik `.env`, biblioteki `vendor` i lokalna baza MariaDB powstają na każdym komputerze zgodnie z instrukcją. Zachowane starsze wersje mogą korzystać z SQLite — stosuj instrukcję właściwą dla pobranej wersji.
 
 ## Organizacja następnych zajęć
 

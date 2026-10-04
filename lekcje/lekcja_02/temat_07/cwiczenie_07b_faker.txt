@@ -1,0 +1,64 @@
+Lekcja 02 | Temat 07 | Ćwiczenie 7B — Faker i książki (zad_faker.PNG)
+
+POBRANIE I URUCHOMIENIE
+Przygotuj MariaDB i Laravel według cwiczenie_07a_uzytkownicy.txt w tym samym folderze.
+Skrót: Code -> Download ZIP z https://github.com/pzx119592/WSB_ZastProg,
+skopiuj project_1 do C:\xampp\htdocs, uruchom MariaDB, utwórz bazę project,
+wykonaj composer install, przygotuj .env i APP_KEY, potem config:clear i migrate.
+Połączenie .env: mysql, host 127.0.0.1, port 3306, baza project, root, puste hasło
+(albo dane dostępu obowiązujące na uczelni).
+
+W folderze C:\xampp\htdocs\project_1 wykonaj:
+php artisan db:seed --class=BooksTableSeeder
+php artisan db:seed --class=BooksTableSeeder --check="The Catcher in the Rye"
+php artisan serve --host=127.0.0.1 --port=8000
+
+Jeśli serwer już działa, wykonaj polecenia seedera w drugim terminalu.
+Pozostaw terminal serwera otwarty; Ctrl+C zatrzymuje serwer.
+Przy zajętym porcie użyj --port=8001 i odpowiednio zmień adresy.
+
+ADRESY DO POKAZANIA
+http://127.0.0.1:8000/books — cała tabela, kolumny title i author.
+http://127.0.0.1:8000/check — komunikat o istniejącej książce i link do jej wiersza.
+http://localhost/phpmyadmin — baza project, tabela books.
+Przez Apache użyj http://localhost/project_1/public/books i /public/check.
+
+OCZEKIWANY REZULTAT
+Pierwsze uruchomienie seedera dodaje 10 losowych tytułów i autorów z Faker
+oraz książkę The Catcher in the Rye / J. D. Salinger dla przykładu z załącznika.
+Losowe książki na innym komputerze mogą mieć inne tytuły i autorów.
+Ponowne zwykłe uruchomienie seedera może dodać nowe losowe książki, ale nie dubluje
+istniejących tytułów. Opcja --check jedynie sprawdza i nie dodaje rekordów.
+
+Po poleceniu --check="The Catcher in the Rye" terminal pokazuje błąd z tytułem
+i adresem /books#book-ID. Otwórz /check i kliknij „Zobacz książkę”.
+Link przewija tabelę do książki i podświetla jej wiersz.
+Funkcja check_book_title przechowuje sprawdzany tytuł w cache bazy,
+aby /check wiedział, jaki tytuł ostatnio sprawdzono w terminalu.
+
+Sprawdzenie tytułu, którego nie ma:
+php artisan db:seed --class=BooksTableSeeder --check="Nieistniejący tytuł"
+Po otwarciu /check nie ma komunikatu o błędzie.
+Na koniec przywróć przykład poleceniem --check="The Catcher in the Rye".
+
+PLIKI DO OTWARCIA W VS CODE
+database/migrations/2026_10_04_165233_create_books_table.php
+database/seeders/BooksTableSeeder.php — Faker, DB::insert i check_book_title.
+app/Console/Commands/SeedWithBookCheck.php — obsługa niestandardowej opcji --check.
+app/Http/Controllers/BooksController.php — dane dla /books i /check.
+resources/views/books.blade.php oraz resources/views/check.blade.php.
+routes/web.php i bootstrap/app.php.
+
+Polecenia Artisan użyte do utworzenia plików:
+php artisan make:migration create_books_table --create=books
+php artisan make:seeder BooksTableSeeder
+
+Faker jest już zależnością projektu i jest instalowany przez composer install.
+Nie używaj --no-dev, bo Faker jest w zależnościach developerskich.
+Załącznik wspomina Laravel 10; rozwiązanie działa w Laravel 12 używanym na zajęciach.
+Opcja --check nie jest standardem Laravel — została dodana, aby polecenie z zadania działało.
+Nie przesyłamy na GitHub lokalnego .env ani całej bazy; migrate i seed odtwarzają przykład.
+
+SPRAWDZENIE
+php artisan test
+Testy używają osobnej bazy SQLite w pamięci i nie modyfikują bazy project.

@@ -1,5 +1,20 @@
 Lekcja 01 | Temat 03 | Ćwiczenie 4 — Pojemność prostopadłościanu
 
+AKTUALNA BAZA PO TEMACIE 7
+Obecna wersja projektu korzysta z MariaDB. Włącz MySQL w XAMPP.
+W phpMyAdmin (http://localhost/phpmyadmin) utwórz bazę poleceniem SQL:
+CREATE DATABASE IF NOT EXISTS project CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+W lokalnym .env sprawdź wartości (dostosuj konto, hasło i port do uczelni):
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=project
+DB_USERNAME=root
+DB_PASSWORD=
+Nowy .env.example zawiera te ustawienia. W istniejącym .env zmień stare DB_*.
+Po zmianie konfiguracji wykonaj php artisan config:clear i php artisan migrate.
+Apache jest potrzebny do phpMyAdmin; aplikację możesz uruchamiać przez Artisan.
+
 POBRANIE I PIERWSZE URUCHOMIENIE NA UCZELNI
 1. Wymagane: XAMPP z PHP 8.2 lub nowszym oraz Composer.
 2. Otwórz https://github.com/pzx119592/WSB_ZastProg
@@ -13,7 +28,6 @@ $env:Path = "C:\xampp\php;" + $env:Path
 composer install
 if (!(Test-Path .env)) { Copy-Item .env.example .env }
 php artisan key:generate
-if (!(Test-Path database\database.sqlite)) { New-Item database\database.sqlite -ItemType File | Out-Null }
 php artisan migrate
 php artisan serve --host=127.0.0.1 --port=8000
 
@@ -21,7 +35,7 @@ Przy kolejnym uruchomieniu wystarczy wejść do folderu projektu i uruchomić Ar
 Terminal serwera pozostaw otwarty; Ctrl+C zatrzymuje serwer.
 Przy zajętym porcie użyj --port=8001 i odpowiednio zmień adres w przeglądarce.
 Jeśli XAMPP ma inną lokalizację, dostosuj ścieżki.
-Do tych ćwiczeń nie trzeba uruchamiać Apache, MariaDB ani npm.
+Do aplikacji potrzebne są Artisan i MariaDB; Apache i npm nie są wymagane.
 
 ADRESY DO POKAZANIA
 http://127.0.0.1:8000/12/32/321

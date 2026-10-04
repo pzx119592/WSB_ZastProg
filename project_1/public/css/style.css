@@ -47,6 +47,20 @@ a:focus-visible {
     font-weight: bold;
 }
 
+.books-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+.books-table th, .books-table td {
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    text-align: left;
+}
+.books-table tr:target {
+    background-color: #fef08a;
+}
+
 .user-form-page {
     background-color: #fff;
     color: #000;

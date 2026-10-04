@@ -18,6 +18,9 @@
             <a href="{{ url('/photo') }}">Zdjęcie bez miasta</a>
             <a href="{{ url('/12/32/321') }}">Pojemność bryły</a>
             <a href="{{ route('userform') }}">Formularz użytkownika</a>
+            <a href="{{ route('adduser') }}">Dodawanie użytkownika</a>
+            <a href="{{ route('books') }}">Książki</a>
+            <a href="{{ route('books.check') }}">Sprawdzenie książki</a>
         </nav>
     </main>
 </body>

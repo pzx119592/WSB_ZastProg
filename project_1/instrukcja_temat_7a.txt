@@ -1,0 +1,70 @@
+Lekcja 02 | Temat 07 | Ćwiczenie 7A — dodawanie użytkowników (ex7 (1).pdf)
+
+POBRANIE I PIERWSZE URUCHOMIENIE NA UCZELNI
+1. Wymagane: XAMPP z PHP 8.2 lub nowszym, Composer, MySQL/MariaDB.
+2. Otwórz https://github.com/pzx119592/WSB_ZastProg
+   Kliknij Code -> Download ZIP i rozpakuj archiwum.
+3. Skopiuj folder project_1 do C:\xampp\htdocs. Zachowaj kopię istniejącego projektu.
+4. Uruchom MySQL w XAMPP Control Panel (to MariaDB).
+5. Włącz Apache i otwórz http://localhost/phpmyadmin.
+   W zakładce SQL wykonaj:
+   CREATE DATABASE IF NOT EXISTS project CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+6. W PowerShell wykonaj:
+
+cd C:\xampp\htdocs\project_1
+$env:Path = "C:\xampp\php;" + $env:Path
+composer install
+if (!(Test-Path .env)) { Copy-Item .env.example .env }
+php artisan key:generate
+
+7. W .env sprawdź połączenie (tak jak na zrzucie w PDF):
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=project
+DB_USERNAME=root
+DB_PASSWORD=
+
+Jeśli na uczelni jest inne konto, hasło lub port bazy, wpisz dane tej instalacji.
+Jeśli masz stary .env z SQLite, zastąp jego linie DB_* powyższymi wartościami.
+8. Następnie wykonaj:
+
+php artisan config:clear
+php artisan migrate
+php artisan serve --host=127.0.0.1 --port=8000
+
+Pozostaw terminal otwarty; Ctrl+C zatrzymuje serwer. Przy kolejnej pracy wystarczy
+włączyć MariaDB i uruchomić Artisan w folderze projektu.
+Przy zajętym porcie użyj --port=8001. Dostosuj ścieżki przy innej instalacji XAMPP.
+
+ADRESY DO POKAZANIA
+http://127.0.0.1:8000/adduser
+http://127.0.0.1:8000/user-records — czytelna tabela zapisanych rekordów.
+http://localhost/phpmyadmin — baza project, tabela user.
+Przez Apache możesz otworzyć http://localhost/project_1/public/adduser.
+
+JAK POKAZAĆ ZADANIE
+Wpisz imię Anna, nazwisko Nowak i datę urodzenia 1999-02-22.
+Kliknij „Dodaj użytkownika”. Formularz wysyła POST pod /User (duże U, jak w PDF).
+Zobaczysz JSON zawierający rekordy z tabeli user. Nowy rekord będzie też widoczny
+w phpMyAdmin. Każde poprawne wysłanie dodaje kolejny rekord.
+Możesz też pokazać rekord na /user-records, bez otwierania phpMyAdmin.
+
+STRUKTURA TABELI user
+id, name, surname, birthday, create_user.
+Kolumna create_user jest automatycznie wypełniana aktualnym czasem.
+Tabela user jest osobna od domyślnej tabeli users frameworka Laravel.
+
+PLIKI DO OTWARCIA W VS CODE
+app/Http/Controllers/User.php — addUser, DB::table('user')->insert i get.
+resources/views/adduser.blade.php — formularz z @csrf i trzema polami.
+routes/web.php — GET /adduser i POST /User.
+database/migrations/2026_10_04_165233_create_user_table.php — struktura tabeli.
+.env — lokalna konfiguracja połączenia, nie jest wysyłana na GitHub.
+
+Artisan użyty do utworzenia plików:
+php artisan make:controller User
+php artisan make:migration create_user_table --create=user
+
+Na uczelni nie generuj ponownie plików — pobierz je i wykonaj migrate.
+Plików ani bazy z innych projektów nie trzeba usuwać.

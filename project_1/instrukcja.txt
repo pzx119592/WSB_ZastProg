@@ -1,4 +1,19 @@
-Tematy 2, 3, 5 i 6 — projekt Laravel 12
+Tematy 2, 3, 5, 6 i 7 — projekt Laravel 12
+
+AKTUALNA BAZA PO TEMACIE 7
+Obecna wersja projektu korzysta z MariaDB. Włącz MySQL w XAMPP.
+W phpMyAdmin (http://localhost/phpmyadmin) utwórz bazę poleceniem SQL:
+CREATE DATABASE IF NOT EXISTS project CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+W lokalnym .env sprawdź wartości (dostosuj konto, hasło i port do uczelni):
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=project
+DB_USERNAME=root
+DB_PASSWORD=
+Nowy .env.example zawiera te ustawienia. W istniejącym .env zmień stare DB_*.
+Po zmianie konfiguracji wykonaj php artisan config:clear i php artisan migrate.
+Apache jest potrzebny do phpMyAdmin; aplikację możesz uruchamiać przez Artisan.
 
 Projekt: project_1. Sprawdzona wersja: Laravel Framework 12.69.3, PHP 8.2.12.
 Repozytorium: https://github.com/pzx119592/WSB_ZastProg
@@ -19,7 +34,6 @@ composer --version
 composer install
 if (!(Test-Path .env)) { Copy-Item .env.example .env }
 php artisan key:generate
-if (!(Test-Path database\database.sqlite)) { New-Item database\database.sqlite -ItemType File | Out-Null }
 php artisan migrate
 php artisan --version
 php artisan serve --host=127.0.0.1 --port=8000
@@ -30,11 +44,11 @@ Przy kolejnych uruchomieniach wystarczy wejść do folderu i wykonać php artisa
 Gdy port 8000 jest zajęty, użyj --port=8001 i adresu http://127.0.0.1:8001.
 Jeśli XAMPP ma inną lokalizację, dostosuj ścieżki powyżej.
 
-Projekt korzysta z domyślnego SQLite; plik bazy i tabele powstają lokalnie.
-Przy php artisan serve nie trzeba uruchamiać Apache ani MariaDB.
+Projekt korzysta z MariaDB; migracje tworzą tabele w bazie project.
+Przy php artisan serve potrzebna jest uruchomiona MariaDB; Apache nie obsługuje wtedy aplikacji.
 Do aktualnych widoków i statycznego CSS nie są potrzebne npm ani Node.js.
 composer install odtwarza wersje z composer.lock; nie używaj composer update.
-Plik .env, baza SQLite i folder vendor nie są przesyłane na GitHub.
+Plik .env, lokalne dane bazy i folder vendor nie są przesyłane na GitHub.
 
 EDYTOR I STRUKTURA PROJEKTU
 Otwórz VS Code -> File -> Open Folder -> C:\xampp\htdocs\project_1.
@@ -53,6 +67,9 @@ Lekcja 2, temat 5: /userform pokazuje formularz, POST /form wyświetla jego dane
 Szczegóły ćwiczenia 5 są w instrukcja_temat_5.txt.
 Lekcja 2, temat 6 rozszerza walidację tego samego formularza.
 Wymagania i przykłady do pokazania są w instrukcja_temat_6.txt.
+Temat 7: /adduser dodaje użytkownika do MariaDB, /user-records pokazuje zapisane rekordy.
+Książki z Fakerem: /books i /check. Najpierw uruchom seeder według instrukcji.
+Szczegóły i adresy do pokazania są w instrukcja_temat_7a.txt i instrukcja_temat_7b.txt.
 
 POLECENIE UŻYTE DO UTWORZENIA PROJEKTU W DOMU
 composer create-project "laravel/laravel:^12.0" project_1

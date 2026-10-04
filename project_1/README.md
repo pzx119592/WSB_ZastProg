@@ -9,6 +9,7 @@ Projekt z przedmiotu **Programowanie w zastosowaniach**. Laravel Framework 12.69
 - [Temat 03, ćwiczenie 4 — pojemność prostopadłościanu](../lekcje/lekcja_01/temat_03/cwiczenie_04.txt).
 - [Lekcja 02, temat 05 — formularz użytkownika](../lekcje/lekcja_02/temat_05/README.md).
 - [Lekcja 02, temat 06 — walidacja danych](../lekcje/lekcja_02/temat_06/README.md).
+- [Lekcja 02, temat 07 — dodawanie użytkowników i Faker](../lekcje/lekcja_02/temat_07/README.md).
 
 ## Uruchomienie
 
@@ -24,5 +25,7 @@ php artisan serve
 Otwórz `http://127.0.0.1:8000`. Strona główna ma nawigację do przykładów. Testy: `php artisan test`.
 
 Formularz z ćwiczenia 5: `http://127.0.0.1:8000/userform`. Dane są wysyłane metodą POST do kontrolera `Form`, a wynik jest wyświetlany przez `form.blade.php`.
+
+Projekt używa teraz MariaDB: uruchom MySQL w XAMPP i utwórz bazę `project` przed migracjami. Zobacz [instrukcję bazy](instrukcja_temat_7a.txt). Dodawanie użytkowników: `/adduser`; książki: `/books`; sprawdzanie tytułu: `/check`.
 
 [Główny spis wszystkich zadań](../README.md) · [Zbiorcza instrukcja tematu 03](instrukcja_temat_3.txt).
