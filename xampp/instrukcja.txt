@@ -1,0 +1,16 @@
+Ćwiczenia 1 i 2 — uruchomienie XAMPP na uczelni
+
+Materiały: https://github.com/pzx119592/WSB_ZastProg
+Aby pobrać instrukcję, kliknij Code -> Download ZIP i rozpakuj archiwum.
+
+1. Otwórz XAMPP Control Panel z instalacji na komputerze uczelnianym.
+2. Kliknij Start przy Apache.
+3. Kliknij Start przy MySQL — w XAMPP jest to serwer MariaDB.
+4. Otwórz http://127.0.0.1 — powinna pojawić się strona XAMPP.
+5. Otwórz http://127.0.0.1/phpmyadmin — powinien pojawić się phpMyAdmin.
+
+Jeśli usługi już działają, nie uruchamiaj ich ponownie.
+Te ćwiczenia nie mają osobnych plików aplikacji do kopiowania do htdocs.
+Jeśli XAMPP nie jest zainstalowany, skorzystaj z https://www.apachefriends.org
+i ustal z prowadzącym możliwość instalacji na komputerze uczelnianym.
+Wymagane składniki: Apache, PHP, MariaDB/MySQL i phpMyAdmin.

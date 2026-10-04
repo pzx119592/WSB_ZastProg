@@ -1,0 +1,22 @@
+Zadanie GitHub — project1
+
+Repozytorium: https://github.com/pzx119592/WSB_ZastProg
+
+1. Otwórz repozytorium, kliknij Code -> Download ZIP i rozpakuj archiwum.
+2. Utwórz C:\xampp\htdocs\git\project1.
+3. Skopiuj index.php i ten plik instrukcja.txt z głównego folderu repozytorium
+   do C:\xampp\htdocs\git\project1.
+4. Uruchom Apache w XAMPP Control Panel.
+5. Otwórz http://localhost/git/project1/
+   Oczekiwany komunikat: Witaj w moim pierwszym projekcie!
+
+Alternatywnie, jeśli na uczelni jest Git i folder project1 jeszcze nie istnieje:
+git clone https://github.com/pzx119592/WSB_ZastProg.git C:\xampp\htdocs\git\project1
+
+Jeśli projekt był już sklonowany i nie ma w nim lokalnych zmian:
+cd C:\xampp\htdocs\git\project1
+git pull --ff-only
+
+Nie trzeba ponownie wykonywać git init ani zakładać repozytorium na GitHubie.
+Ten projekt nie wymaga bazy danych. Użyj htdocs właściwej instalacji XAMPP.
+Pozostałe zadania są w osobnych podfolderach repozytorium z własnymi instrukcjami.
