@@ -1,0 +1,219 @@
+CAŁY KURS NA DRUGIM KOMPUTERZE — INSTRUKCJA KOŃCOWA
+Repozytorium: https://github.com/pzx119592/WSB_ZastProg
+PHP / XAMPP / Laravel 12. Instrukcja dotyczy Windows i pierwszego uruchomienia.
+
+1. ZAINSTALUJ ŚRODOWISKO (TYLKO RAZ)
+-----------------------------------
+XAMPP: https://www.apachefriends.org/download.html
+Wybierz wydanie Windows z PHP 8.2 lub nowszym. Zainstaluj w C:\xampp.
+Potrzebujesz Apache, PHP, MariaDB (w panelu: MySQL) i phpMyAdmin.
+Composer: https://getcomposer.org/download/
+W instalatorze wskaż interpreter C:\xampp\php\php.exe.
+VS Code jest przydatny do pokazania kodu, ale nie jest potrzebny do uruchomienia.
+Git jest potrzebny tylko do wariantu git clone i pokazania historii commitów.
+
+Otwórz NOWE okno PowerShell i wykonaj:
+$env:Path = "C:\xampp\php;" + $env:Path
+php --version
+composer --version
+php --ini
+
+PHP musi mieć wersję co najmniej 8.2, a konfiguracja pochodzić z XAMPP.
+W C:\xampp\php\php.ini sprawdź rozszerzenia curl, mbstring, openssl, pdo_mysql,
+fileinfo i zip. Do testów potrzebne jest też pdo_sqlite. W razie potrzeby usuń
+średnik przed istniejącą linią extension=..., zapisz i zrestartuj Apache.
+Nie trzeba instalować Laravel od nowa ani uruchamiać laravel new.
+Nie potrzeba Node.js, npm ani kopiowania całego folderu C:\xampp ze starego PC.
+
+2. POBIERZ CAŁE REPOZYTORIUM I UŁÓŻ FOLDERY
+------------------------------------------
+GitHub -> zielony przycisk Code -> Download ZIP -> rozpakuj archiwum.
+Folder WSB_ZastProg-main przemianuj na project1 i umieść w:
+C:\xampp\htdocs\git\project1
+W środku mają być README.md, index.php, project_1, pierwszy_skrypt, baza, lekcje.
+Uważaj na podwójny folder, np. project1\WSB_ZastProg-main\project_1.
+
+Następnie z tego pobranego folderu skopiuj:
+- project_1 -> C:\xampp\htdocs\project_1
+- pierwszy_skrypt -> C:\xampp\htdocs\pierwszy_skrypt
+
+Docelowe pliki:
+C:\xampp\htdocs\project_1\artisan
+C:\xampp\htdocs\pierwszy_skrypt\index.php
+C:\xampp\htdocs\git\project1\index.php
+
+Jeśli te katalogi już istnieją i zawierają Twoje pliki, zachowaj ich kopię
+przed podmianą. Dalej pracujemy w C:\xampp\htdocs\project_1.
+
+ALTERNATYWA Z GIT (ZAMIAST ZIP)
+Po instalacji Git, gdy folder project1 jeszcze nie istnieje:
+git clone https://github.com/pzx119592/WSB_ZastProg.git C:\xampp\htdocs\git\project1
+Następnie skopiuj project_1 i pierwszy_skrypt tak samo jak powyżej.
+Git clone pobiera również historię commitów; ZIP zawiera tylko pliki.
+Publiczne repozytorium można pobrać bez logowania do GitHuba.
+
+3. PRZYGOTUJ LARAVEL
+-------------------
+W PowerShell wykonaj:
+cd C:\xampp\htdocs\project_1
+$env:Path = "C:\xampp\php;" + $env:Path
+Copy-Item .env.example .env
+composer install
+composer check-platform-reqs
+php artisan key:generate
+php artisan --version
+
+Powinno być Laravel Framework 12.x. Używaj composer install: composer.lock
+odtwarza wersje bibliotek z repozytorium. Nie wykonuj composer update.
+composer install automatycznie instaluje też pliki CSS/JS panelu AdminLTE.
+Kopiowanie .env.example i generowanie klucza wykonaj tylko dla NOWEJ instalacji.
+
+4. UTWÓRZ BAZĘ I USTAW .env
+--------------------------
+W XAMPP uruchom Apache i MySQL. Otwórz http://localhost/phpmyadmin.
+Utwórz NOWĄ pustą bazę project, kodowanie utf8mb4_unicode_ci.
+Jeśli project już zawiera cudze lub własne dane, użyj nowej bazy, np.
+project_kurs, i wpisz tę samą nazwę w DB_DATABASE poniżej.
+
+W pliku C:\xampp\htdocs\project_1\.env ustaw:
+APP_URL=http://127.0.0.1:8000
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=project
+DB_USERNAME=root
+DB_PASSWORD=
+
+Puste hasło dotyczy standardowej lokalnej instalacji XAMPP. Jeżeli na drugim
+komputerze jest inne konto, hasło lub port MariaDB, wpisz jego właściwe dane.
+Zostaw SESSION_DRIVER=database i CACHE_STORE=database z .env.example.
+
+5. ODTWÓRZ STRUKTURĘ I DANE PRZYKŁADOWE (WARIANT Z GITHUBA)
+----------------------------------------------------------
+W terminalu projektu:
+php artisan config:clear
+php artisan migrate
+
+W phpMyAdmin wybierz nową bazę -> Import i wgraj kolejno:
+C:\xampp\htdocs\git\project1\baza\temat_07_dane_przykladowe.sql
+C:\xampp\htdocs\git\project1\baza\temat_09_dane_przykladowe.sql
+Format SQL, kodowanie UTF-8. Każdy plik importuj RAZ, do pustych tabel.
+
+Oczekiwane dane: user — 1 osoba, books — 11 książek, books_temat9 — 3 książki,
+tests — 1 osoba. Tabela users (konta logowania) będzie na razie pusta.
+W terminalu wykonaj następnie:
+php artisan db:seed --class=BooksTableSeeder --check="The Catcher in the Rye"
+
+Komunikat o istniejącej książce jest tu oczekiwanym wynikiem ćwiczenia 7B.
+Po tych importach nie uruchamiaj zwykłych seederów BooksTableSeeder/BookSeeder
+ani ogólnego db:seed: dane do prezentacji zostały już odtworzone.
+Nie używaj migrate:fresh ani migrate:refresh — usuwają dane.
+
+6. URUCHOM I UTWÓRZ KONTO
+------------------------
+php artisan serve --host=127.0.0.1 --port=8000
+
+Pozostaw terminal otwarty. Otwórz http://127.0.0.1:8000/.
+Wszystkie linki są pod nagłówkami odpowiednich tematów.
+Otwórz /register, utwórz własne konto, a potem zaloguj się przez /login.
+Konta i hasła ze starego komputera nie są częścią publicznego zestawu SQL.
+Panel i jego logo powinny wyglądać tak samo. Użyj jednego adresu bazowego
+(127.0.0.1:8000) podczas rejestracji, logowania i korzystania z panelu.
+
+7. LISTA KONTROLNA — CO POKAZAĆ
+------------------------------
+Temat 1:
+http://localhost — XAMPP.
+http://localhost/phpmyadmin — baza i tabele.
+http://localhost/pierwszy_skrypt/ — Witaj w moim pierwszym projekcie!
+http://localhost/git/project1/ — prosty projekt PHP z zadania GitHub.
+Przy git clone: git -C C:\xampp\htdocs\git\project1 log --oneline -5.
+Temat 2: php artisan --version — Laravel 12.x.
+Temat 3:
+http://127.0.0.1:8000/ — własna strona główna i CSS.
+http://127.0.0.1:8000/witaj — powitanie.
+http://127.0.0.1:8000/test — odpowiedź kontrolera.
+http://127.0.0.1:8000/users/42 — identyfikator użytkownika 42.
+http://127.0.0.1:8000/photo/Krakow/Dluga — miasto i ulica.
+http://127.0.0.1:8000/photo — brak miasta i ulica main.
+http://127.0.0.1:8000/12/32/321 — żółta strona, niebieskie 123264 m3.
+Tematy 5 i 6:
+http://127.0.0.1:8000/userform — formularz; sprawdź błędy i poprawne wysłanie.
+Temat 7:
+http://127.0.0.1:8000/adduser — dodanie osoby, po wysłaniu JSON.
+http://127.0.0.1:8000/user-records — zapisane osoby.
+http://127.0.0.1:8000/books — 11 książek z kopii danych.
+http://127.0.0.1:8000/check — istniejący tytuł i link do książki.
+Temat 8:
+http://127.0.0.1:8000/register — rejestracja.
+http://127.0.0.1:8000/login — logowanie.
+http://127.0.0.1:8000/home — panel po zalogowaniu; sprawdź też Logout.
+http://127.0.0.1:8000/panel/formularz — imię i nazwisko, po wysłaniu wynik.
+Temat 9:
+http://127.0.0.1:8000/temat-9/books — 3 książki przez model Book.
+http://127.0.0.1:8000/temat-9/dbTestTableForm — formularz przez model Test.
+http://127.0.0.1:8000/temat-9/ModelTestController — zapisane osoby.
+Temat 10:
+http://127.0.0.1:8000/kursy — aktualna tabela kupna i sprzedaży NBP.
+http://127.0.0.1:8000/kalkulatorwalut — 200 PLN, wybierz CHF i kliknij Przelicz.
+Do NBP potrzebny jest Internet; kurs i wynik mogą zmieniać się z czasem.
+
+Dodatkowo w DRUGIM terminalu, w folderze projektu: php artisan test.
+Testy korzystają z osobnej bazy SQLite w pamięci, nie zmieniają Twojej MariaDB.
+Szczegóły zadań: README.md i folder lekcje w pobranym repozytorium.
+
+8. KAŻDE NASTĘPNE URUCHOMIENIE
+-----------------------------
+Uruchom Apache i MySQL w XAMPP. Otwórz PowerShell:
+cd C:\xampp\htdocs\project_1
+$env:Path = "C:\xampp\php;" + $env:Path
+php artisan serve
+Otwórz http://127.0.0.1:8000/. Nie trzeba ponownie importować SQL, instalować
+Composera, kopiować .env ani generować klucza. Ctrl+C wyłącza serwer Laravel.
+
+9. JEŚLI CHCESZ DOKŁADNIE SWOJE DOMOWE REKORDY I KONTA
+----------------------------------------------------
+Publiczna kopia przywraca działanie wszystkich zadań z danymi przykładowymi.
+Pełna prywatna kopia wykonana na pierwszym komputerze jest tutaj:
+C:\xampp\oddanie_github\przeniesienie_prywatne\project_dom.sql
+Przenieś ją na własny drugi komputer np. pendrivem. Nie publikuj jej na GitHubie:
+zawiera także konta, skróty haseł oraz dane sesji. Nie jest częścią ZIP-a GitHuba.
+
+W tym wariancie wykonaj kroki 1–4, następnie ZAMIAST kroku 5:
+- do NOWEJ PUSTEJ bazy zaimportuj tylko prywatny project_dom.sql;
+- wykonaj php artisan config:clear oraz php artisan migrate;
+- wykonaj php artisan db:seed --class=BooksTableSeeder --check="The Catcher in the Rye";
+- przejdź do kroku 6. Możesz zalogować się dotychczasowym kontem i hasłem.
+Pełny plik SQL ma już strukturę tabel i dane. Nie łącz go z importami próbek.
+Nowy APP_KEY utworzony na drugim komputerze jest właściwy dla tej instalacji.
+Jeżeli później zmienisz dane w domu, zrób nową kopię w phpMyAdmin -> Eksport -> SQL.
+
+10. NAJCZĘSTSZE PROBLEMY
+-----------------------
+"php/composer nie jest rozpoznawane": nowe okno PowerShell, dopisz PHP do Path
+poleceniem z kroku 1; Composer musi być zainstalowany i wskazywać PHP XAMPP.
+Brak vendor/autoload.php: wykonaj composer install w folderze project_1.
+Brak APP_KEY: php artisan key:generate dla nowej instalacji.
+Unknown database / Connection refused: włącz MySQL, sprawdź bazę i dane .env.
+Brak tabel sessions/cache: wykonaj php artisan migrate w właściwej bazie.
+Błąd 419: odśwież formularz, używaj tego samego adresu bazowego i sprawdź sesje.
+Zajęty port 8000: php artisan serve --port=8001, używaj wtedy 127.0.0.1:8001.
+Brak wyglądu panelu: composer install; ewentualnie:
+php artisan adminlte:install --only=assets --no-interaction
+NBP niedostępne: sprawdź Internet i komunikat aplikacji. Przy błędzie certyfikatu
+nie wyłączaj weryfikacji HTTPS; trzeba poprawić certyfikaty CA w PHP.
+Brak zmian po edycji .env/widoków: php artisan config:clear i php artisan view:clear.
+
+WERYFIKACJA KOMPLETNOŚCI
+-----------------------
+04.10.2026: pobrano świeży ZIP bezpośrednio z GitHuba. W osobnym katalogu
+zainstalowano biblioteki, utworzono klucz, wykonano migracje do pustej MariaDB
+i zaimportowano oba publiczne SQL. Sprawdzono 20 stron/zasobów (HTTP 200),
+w tym NBP, widoki modeli, formularze, AdminLTE i logo. 47 testów przeszło.
+To próba świeżej instalacji na obecnym komputerze; drugi komputer sprawdzisz
+tą samą instrukcją, zaczynając od instalacji jego własnego XAMPP i Composera.
+
+ŹRÓDŁA WYMAGAŃ I INSTALACJI
+https://laravel.com/docs/12.x/deployment#server-requirements
+https://getcomposer.org/doc/00-intro.md#installation-windows
+https://www.apachefriends.org/download.html

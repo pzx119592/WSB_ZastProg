@@ -2,6 +2,8 @@
 
 Ćwiczenia z zajęć: PHP, XAMPP i Laravel 12. **Wybierz lekcję, temat i ćwiczenie**, aby znaleźć instrukcję, adres do pokazania i kod.
 
+**Pierwsze uruchomienie całego kursu na innym komputerze:** [instrukcja końcowa krok po kroku](INSTRUKCJA_PRZENIESIENIA.txt). Zawiera instalację środowiska, układ folderów, oba importy danych i pełną listę adresów do sprawdzenia. Świeży ZIP z GitHuba został sprawdzony 04.10.2026: Composer, migracje, dane, 20 stron/zasobów oraz 47 testów.
+
 ## Lekcja 01 — spis zadań
 
 | Lekcja | Temat | Ćwiczenie | Zadanie / instrukcja | Wynik do pokazania po uruchomieniu |

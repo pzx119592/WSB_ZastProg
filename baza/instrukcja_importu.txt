@@ -7,7 +7,7 @@ instrukcja_importu_temat_09.txt. Poniższa kopia tematu 7 działa jak wcześniej
 W phpMyAdmin wybierz bazę project, potem tabelę i zakładkę Przeglądaj.
 user: Twoje ćwiczenie 7A — imię, nazwisko, urodziny i czas utworzenia.
 books: ćwiczenie 7B — tytuły i autorzy książek.
-users: domyślna tabela kont Laravel, inna niż user; obecne ćwiczenie jej nie używa.
+users: konta rejestracji i logowania z tematu 8; inna tabela niż user z tematu 7A.
 migrations: spis wykonanych migracji, potrzebny Laravelowi do aktualizacji struktury.
 sessions: sesje przeglądarki; umożliwiają między innymi działanie formularzy i CSRF.
 cache, cache_locks: pamięć podręczna; /check korzysta z niej do zapamiętania tytułu.
