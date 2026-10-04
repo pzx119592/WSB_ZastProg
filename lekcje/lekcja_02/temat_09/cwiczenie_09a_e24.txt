@@ -1,0 +1,103 @@
+Lekcja 02 | Temat 09 | Ćwiczenie 9A — e24.pdf: model Book i lista książek
+
+POBRANIE I URUCHOMIENIE NA UCZELNI
+1. Wymagane: XAMPP z PHP 8.2+, Composer, MariaDB. Włącz MySQL w XAMPP.
+   Dla phpMyAdmin uruchom również Apache.
+2. https://github.com/pzx119592/WSB_ZastProg -> Code -> Download ZIP.
+   Rozpakuj, skopiuj project_1 do C:\xampp\htdocs.
+   Przed aktualizacją zachowaj kopię swoich istniejących plików.
+3. http://localhost/phpmyadmin -> SQL:
+   CREATE DATABASE IF NOT EXISTS project CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+4. PowerShell:
+
+cd C:\xampp\htdocs\project_1
+$env:Path = "C:\xampp\php;" + $env:Path
+composer install
+if (!(Test-Path .env)) { Copy-Item .env.example .env }
+
+5. Dla nowego .env wykonaj php artisan key:generate. Przy aktualizacji zachowaj
+   istniejący APP_KEY. Sprawdź połączenie w .env:
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=project
+DB_USERNAME=root
+DB_PASSWORD=
+
+Dostosuj hasło, konto, port i bazę do komputera uczelnianego.
+6. Dalej w terminalu:
+
+php artisan config:clear
+php artisan migrate
+php artisan db:seed --class=BookSeeder
+php artisan serve --host=127.0.0.1 --port=8000
+
+Terminal serwera pozostaw otwarty; Ctrl+C go zatrzymuje.
+Przy kolejnym uruchomieniu włącz MariaDB i wykonaj artisan serve.
+Przy zajętym porcie wybierz --port=8001 i zmień adres w przeglądarce.
+Nie potrzeba npm ani Node.js. composer install odtwarza zależności z composer.lock.
+Nie używaj migrate:fresh — usuwa istniejące tabele i dane innych ćwiczeń.
+
+ADRESY DO POKAZANIA
+http://127.0.0.1:8000/temat-9/books
+http://localhost/phpmyadmin — baza project, tabela books_temat9.
+Przez Apache: http://localhost/project_1/public/temat-9/books.
+
+OCZEKIWANY EFEKT
+Lista książek
+• Tytuł: Ogniem i mieczem
+• Tytuł: Potop
+• Tytuł: Pan Wołodyjowski
+
+Seeder zawiera 3 przykładowe rekordy z rokiem, ceną, liczbą stron i miejscem
+wydania. Ceny i liczby stron są danymi dydaktycznymi przykładowych wydań.
+W phpMyAdmin -> Struktura pokaż kolumny:
+id, title, year, price, pages, publication_place, created_at, updated_at.
+created_at to data dodania; updated_at to data aktualizacji.
+Ponowne uruchomienie BookSeeder nie dodaje duplikatów i nie zmienia starych książek.
+
+OSOBNE ĆWICZENIA
+PDF używa /books i tabeli books. Te nazwy były już zajęte przez temat 7.
+Zgodnie z zasadą zachowania poprzednich zadań temat 9 ma /temat-9/books oraz
+books_temat9. Model Book wskazuje tabelę przez protected $table.
+Temat 7 nadal działa pod /books i korzysta z wcześniejszej tabeli books.
+
+PLIKI DO POKAZANIA W VS CODE
+app/Models/Book.php — Eloquent Model, $table, $fillable i casts.
+app/Http/Controllers/BookController.php — Book::orderBy('id')->get().
+database/migrations/2026_10_04_175159_create_books_temat9_table.php.
+database/seeders/BookSeeder.php — 3 rekordy, Book::firstOrCreate(...).
+resources/views/book/list.blade.php — @forelse i Tytuł: {{ $book->title }}.
+routes/web.php — grupa tras prefiksu temat-9.
+
+ARTISAN UŻYTY W ĆWICZENIU
+php artisan make:model Book
+php artisan make:controller BookController
+php artisan make:migration create_books_temat9_table --create=books_temat9
+php artisan make:seeder BookSeeder
+
+Na uczelni nie generuj ich ponownie: pliki już są w pobranym projekcie.
+Dodatkowe opcje make:model (do wyjaśnienia, nie do nadpisywania plików):
+-m lub --migration: model i migracja.
+-c lub --controller: także kontroler.
+-s lub --seed: także seeder.
+-f lub --factory: także fabryka danych testowych.
+-r lub --resource: kontroler zasobu z metodami CRUD (razem z -c).
+-a lub --all: model i komplet powiązanych klas.
+Można je łączyć, np. php artisan make:model Przyklad -mcs.
+Pomoc: php artisan help make:model.
+
+ZAPYTANIA PRZEZ MODEL — DO WYJAŚNIENIA
+Book::all() — pobierz wszystkie książki modelu Book.
+Book::where('year', '>=', 1886)->get() — pobierz książki spełniające warunek.
+Book::find(1) — pobierz książkę o id 1.
+Model odwołuje się tu do books_temat9; Eloquent bez $table wybrałby books.
+Kontroler pobiera modele, przekazuje je do widoku, a Blade wyświetla tytuły.
+
+KOPIA TYCH SAMYCH DANYCH — OPCJONALNIE
+Repozytorium zawiera baza/temat_09_dane_przykladowe.sql i instrukcję importu.
+Po migrate import do PUSTYCH tabel tematu 9 może zastąpić BookSeeder oraz
+ręczne dodanie przykładu z ćwiczenia 9B. Nie importuj SQL drugi raz do tych
+samych rekordów. Stare kopie SQL i ćwiczenia z tematu 7 działają osobno.
+
+TESTY: php artisan test (osobna baza SQLite w pamięci, nie modyfikuje MariaDB).

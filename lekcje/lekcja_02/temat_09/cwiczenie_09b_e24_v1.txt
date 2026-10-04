@@ -1,0 +1,72 @@
+Lekcja 02 | Temat 09 | Ćwiczenie 9B — e24_v1.pdf: formularz i model Test
+
+POBRANIE I URUCHOMIENIE NA UCZELNI
+Przygotuj XAMPP, Composer, project_1 i bazę project według cwiczenie_09a_e24.txt.
+Skrót: pobierz ZIP https://github.com/pzx119592/WSB_ZastProg,
+skopiuj project_1 do C:\xampp\htdocs, włącz MariaDB, utwórz bazę project,
+wykonaj composer install, przygotuj .env i APP_KEY, potem config:clear i migrate.
+.env: mysql, 127.0.0.1, 3306, baza project, użytkownik root i puste hasło
+albo dane dostępu obowiązujące na uczelni.
+Pełne polecenia są w instrukcji 9A; nie twórz ponownie plików ani migracji.
+Nie usuwaj wcześniejszych tabel ani danych. migrate:fresh nie jest potrzebne.
+W terminalu w folderze project_1:
+php artisan serve --host=127.0.0.1 --port=8000
+Pozostaw go otwarty. Przy zajętym porcie wybierz 8001.
+Ćwiczenie 9B nie potrzebuje seedera: dane dodajesz formularzem.
+
+ADRESY DO POKAZANIA
+http://127.0.0.1:8000/temat-9/dbTestTableForm
+http://127.0.0.1:8000/temat-9/ModelTestController
+http://localhost/phpmyadmin — baza project, tabela tests.
+Przez Apache: http://localhost/project_1/public/temat-9/dbTestTableForm.
+
+SCENARIUSZ PREZENTACJI — PO ĆWICZENIU 9A
+1. Otwórz formularz. Ma imię, nazwisko, e-mail, datę urodzenia i wzrost.
+2. Wpisz Franciszek, Nowak, franciszek@example.test, datę 26.03.2022, wzrost 72.
+   Adres testowy zastępuje rzeczywisty e-mail widoczny na zrzucie w PDF.
+3. Kliknij Dodaj użytkownika. POST zapisze dane przez Test::create(...) do tests.
+4. Po przekierowaniu pokaż tekst:
+   Imię i nazwisko: Franciszek Nowak, email: franciszek@example.test
+   Pod spodem są id, data urodzenia, wzrost 72.00 cm i znaczniki czasu.
+5. W phpMyAdmin -> tests -> Przeglądaj pokaż nowy rekord i wszystkie kolumny:
+   id, name, surname, email, birthday, height, created_at, updated_at.
+6. Dodaj inną przykładową osobę. Lista pokaże WSZYSTKIE rekordy z tabeli.
+   Odświeżenie listy nie dodaje ponownie użytkownika.
+7. Spróbuj niepoprawnego e-maila lub wzrostu: formularz pokaże błąd i nie zapisze
+   rekordu. Walidacja działa również w kontrolerze, oprócz ograniczeń HTML.
+
+MODEL A KONTO
+Model Test domyślnie korzysta z tabeli tests (nazwa klasy w liczbie mnogiej).
+Rekord w tests to dane osoby na potrzeby tego ćwiczenia, a nie konto logowania.
+Nie zapisuje do users z tematu 8 ani do user z tematu 7A.
+Prefiks /temat-9/ rozróżnia to ćwiczenie od poprzednich formularzy.
+
+PLIKI DO POKAZANIA
+app/Models/Test.php — $fillable i casts dla daty oraz wzrostu.
+app/Http/Controllers/ModelTestController.php — form, store, index.
+database/migrations/2026_10_04_174841_create_tests_table.php.
+resources/views/test/form.blade.php — pola i @csrf.
+resources/views/test/list.blade.php — wszystkie rekordy i bezpieczne {{ ... }}.
+routes/web.php — trasy GET/POST w grupie temat-9.
+
+ARTISAN UŻYTY W DOMU
+php artisan make:model Test --migration
+php artisan make:controller ModelTestController
+php artisan migrate
+Opcja --migration (lub -m) tworzy model i migrację jednym poleceniem.
+
+ZAPYTANIA DO WYJAŚNIENIA
+Test::create($data) — dodaje rekord z wcześniej zwalidowanych pól.
+Test::orderBy('id')->get() — pobiera wszystkie rekordy w kolejności.
+Test::where('surname', 'Nowak')->get() — wybiera osoby o tym nazwisku.
+$fillable wskazuje pola, które mogą być ustawione przez create.
+Eloquent uzupełnia created_at i updated_at przy zapisie.
+
+KOPIA DANYCH
+Opcjonalnie baza/temat_09_dane_przykladowe.sql odtwarza 3 książki i jedną
+przykładową osobę. Importuj po migrate do pustych tabel tematu 9, według
+baza/instrukcja_importu_temat_09.txt. Jeśli zaimportujesz kopię, przykład już
+jest na liście: nie musisz ponownie wysyłać tych samych danych formularzem.
+Domowej bazy, .env i kont logowania nie przesyłamy na GitHub.
+
+TESTY: php artisan test (SQLite w pamięci, niezależne od domowej bazy).

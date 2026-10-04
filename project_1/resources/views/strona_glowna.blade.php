@@ -27,6 +27,14 @@
                 <a href="{{ route('login') }}">Logowanie</a>
             @endguest
         </nav>
+        <section>
+            <h2>Temat 9 — Modele</h2>
+            <nav aria-label="Ćwiczenia tematu 9">
+                <a href="{{ route('topic9.books') }}">Lista książek — e24</a>
+                <a href="{{ route('topic9.tests.form') }}">Formularz — e24_v1</a>
+                <a href="{{ route('topic9.tests.list') }}">Użytkownicy z tabeli tests — e24_v1</a>
+            </nav>
+        </section>
     </main>
 </body>
 </html>

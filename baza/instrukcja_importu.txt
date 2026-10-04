@@ -1,5 +1,9 @@
 BAZA project — CO JEST WAŻNE I JAK PRZENIEŚĆ DANE
 
+Temat 9 dodaje books_temat9 (osobne książki) i tests (formularz z modelem).
+Osobna kopia tych danych: temat_09_dane_przykladowe.sql oraz
+instrukcja_importu_temat_09.txt. Poniższa kopia tematu 7 działa jak wcześniej.
+
 W phpMyAdmin wybierz bazę project, potem tabelę i zakładkę Przeglądaj.
 user: Twoje ćwiczenie 7A — imię, nazwisko, urodziny i czas utworzenia.
 books: ćwiczenie 7B — tytuły i autorzy książek.

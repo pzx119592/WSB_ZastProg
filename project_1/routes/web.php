@@ -4,6 +4,8 @@ use App\Http\Controllers\Form;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PanelController;
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\ModelTestController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\User;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +28,13 @@ Route::post('/User', [User::class, 'addUser'])->name('user.add');
 Route::get('/user-records', [User::class, 'records'])->name('user.records');
 Route::get('/books', [BooksController::class, 'index'])->name('books');
 Route::get('/check', [BooksController::class, 'check'])->name('books.check');
+
+Route::prefix('temat-9')->name('topic9.')->group(function () {
+    Route::get('/books', [BookController::class, 'index'])->name('books');
+    Route::get('/dbTestTableForm', [ModelTestController::class, 'form'])->name('tests.form');
+    Route::post('/dbTestTableForm', [ModelTestController::class, 'store'])->name('tests.store');
+    Route::get('/ModelTestController', [ModelTestController::class, 'index'])->name('tests.list');
+});
 
 Route::middleware('guest')->group(function () {
     Route::get('/register', [AuthController::class, 'registerForm'])->name('register');

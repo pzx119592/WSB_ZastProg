@@ -1,0 +1,22 @@
+TEMAT 09 — OPCJONALNA KOPIA DANYCH DO PREZENTACJI
+
+Plik temat_09_dane_przykladowe.sql zawiera:
+- 3 książki w books_temat9 (e24),
+- 1 przykładowy rekord Franciszek Nowak w tests (e24_v1).
+Nie zawiera kont, haseł, sesji ani rekordów innych ćwiczeń.
+
+1. Przygotuj projekt i .env według instrukcji ćwiczenia 9A.
+2. Wykonaj php artisan config:clear i php artisan migrate.
+3. Upewnij się, że books_temat9 i tests są PUSTE. Jeśli mają już własne dane,
+   zachowaj je i wybierz wariant z seederem/formularzem zamiast importu.
+   Możesz też przygotować nową bazę do prezentacji i ustawić DB_DATABASE.
+4. phpMyAdmin -> wybierz właściwą bazę -> Import -> temat_09_dane_przykladowe.sql.
+   Format SQL, kodowanie UTF-8. Importuj raz; drugi import zgłosi duplikaty id.
+5. Import zastępuje uruchomienie BookSeeder i ręczne dodanie tej jednej osoby.
+6. Uruchom php artisan serve i pokaż:
+   http://127.0.0.1:8000/temat-9/books
+   http://127.0.0.1:8000/temat-9/ModelTestController
+
+Strukturę odtwarzają migracje. Ta kopia danych jest osobna od kopii tematu 7.
+Można importować je do tej samej bazy po migracjach, bo wypełniają inne tabele.
+Publiczna kopia SQL nie jest pełnym backupem całej domowej bazy.

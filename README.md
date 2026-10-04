@@ -28,6 +28,8 @@
 | 02 | 07 | 7A | [Dodawanie użytkowników do bazy](lekcje/lekcja_02/temat_07/cwiczenie_07a_uzytkownicy.txt) | `http://127.0.0.1:8000/adduser` — zapis i wynik JSON |
 | 02 | 07 | 7B | [Faker i sprawdzanie książek](lekcje/lekcja_02/temat_07/cwiczenie_07b_faker.txt) | `http://127.0.0.1:8000/books`, `/check` |
 | 02 | 08 | 8 | [Autoryzacja i panel AdminLTE 3](lekcje/lekcja_02/temat_08/cwiczenie_08.txt) | `/register`, `/login`, `/home`, `/panel/formularz` |
+| 02 | 09 | 9A — e24 | [Model Book i lista książek](lekcje/lekcja_02/temat_09/cwiczenie_09a_e24.txt) | `/temat-9/books` — 3 książki |
+| 02 | 09 | 9B — e24_v1 | [Formularz i model Test](lekcje/lekcja_02/temat_09/cwiczenie_09b_e24_v1.txt) | `/temat-9/dbTestTableForm`, `/temat-9/ModelTestController` |
 
 [Opis lekcji 02](lekcje/lekcja_02/README.md) · [Temat 05 — Wykorzystanie formularzy](lekcje/lekcja_02/temat_05/README.md) · [Temat 06 — Walidacja danych](lekcje/lekcja_02/temat_06/README.md)
 
@@ -45,7 +47,7 @@ Numeracja tematu 05 jest zgodna z materiałami prowadzącego. Nie przypisano zad
 |---|---|---|
 | [pierwszy_skrypt/](pierwszy_skrypt/) | Pierwszy skrypt PHP | `C:\xampp\htdocs\pierwszy_skrypt` |
 | [index.php](index.php) w głównym katalogu | Prosty projekt z zadania GitHub | `C:\xampp\htdocs\git\project1` |
-| [project_1/](project_1/) | Wspólny projekt Laravel 12: tematy 02, 03, 05, 06, 07 i 08 | `C:\xampp\htdocs\project_1` |
+| [project_1/](project_1/) | Wspólny projekt Laravel 12: tematy 02, 03, 05, 06, 07, 08 i 09 | `C:\xampp\htdocs\project_1` |
 | [xampp/](xampp/) | Instrukcja środowiska | Instalacja XAMPP |
 | [lekcje/](lekcje/) | Spis i instrukcje wszystkich zadań | Dokumentacja |
 
@@ -70,6 +72,10 @@ Aktualne pliki: **Code → Download ZIP**. Do uruchomienia Laravel skopiuj folde
 Plik `.env`, biblioteki `vendor` i lokalna baza MariaDB powstają na każdym komputerze zgodnie z instrukcją. Zachowane starsze wersje mogą korzystać z SQLite — stosuj instrukcję właściwą dla pobranej wersji.
 
 ## Organizacja następnych zajęć
+
+**Zachowujemy wcześniejsze ćwiczenia na ich etapie:** kolejne zadanie nie zastępuje istniejących adresów, widoków ani tabel. Przy kolizji nazw nowe zadanie dostaje prefiks tematu, np. `/temat-9/books` i `books_temat9`; wcześniejsze `/books` i `books` nadal pokazują temat 7. Każda wersja ćwiczenia otrzymuje osobną instrukcję.
+
+[Temat 09 — Modele](lekcje/lekcja_02/temat_09/README.md) obejmuje e24, a następnie e24_v1. [Osobna kopia SQL tematu 9](baza/instrukcja_importu_temat_09.txt) odtwarza tylko dane tych ćwiczeń.
 
 Każda kolejna lekcja otrzyma folder `lekcje/lekcja_02`, `lekcja_03` itd. W środku znajdą się tematy i osobne instrukcje ćwiczeń. Spis będzie aktualizowany razem z kodem.
 
