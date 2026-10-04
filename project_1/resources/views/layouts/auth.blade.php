@@ -4,8 +4,7 @@
 @section('body')
 <main class="login-box my-4">
     <div class="login-logo bg-white rounded p-3">
-        <img src="{{ asset('images/wsb-merito.png') }}" alt="Uniwersytet WSB Merito" class="img-fluid" style="max-height: 100px">
-        <div class="h5 mt-2 mb-0 text-dark">WSB Merito</div>
+        <img src="{{ asset('images/wsb-merito.svg') }}" alt="Uniwersytety WSB Merito" class="img-fluid" style="max-height: 100px">
     </div>
     <div class="card"><div class="card-body login-card-body">
         <h1 class="h4 text-center mb-4">@yield('heading')</h1>

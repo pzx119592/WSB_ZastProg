@@ -48,7 +48,7 @@ class AuthorizationExercisesTest extends TestCase
         $this->post('/login', ['email' => 'student@example.test', 'password' => 'Testowe123!'])
             ->assertRedirect('/home');
         $this->assertAuthenticatedAs(User::first());
-        $this->get('/home')->assertOk()->assertSee('Anna Nowak')->assertSee('wsb-merito.png')
+        $this->get('/home')->assertOk()->assertSee('Anna Nowak')->assertSee('wsb-merito.svg')
             ->assertSee('adminlte.min.css')->assertSee('Logout')->assertDontSee('Dashboard v3');
         $this->get('/panel/formularz')->assertOk()->assertSee('name="surname"', false);
         $this->post('/panel/formularz', ['name' => 'Jan', 'surname' => 'Kowalski'])

@@ -24,8 +24,7 @@
     </nav>
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <a href="{{ route('home') }}" class="brand-link bg-white text-center" aria-label="Panel WSB">
-            <img src="{{ asset('images/wsb-merito.png') }}" alt="Uniwersytet WSB Merito" style="max-width: 200px; max-height: 80px">
-            <span class="d-block h6 mt-2 mb-0 text-dark">WSB Merito</span>
+            <img src="{{ asset('images/wsb-merito.svg') }}" alt="Uniwersytety WSB Merito" style="max-width: 200px; max-height: 80px">
         </a>
         <div class="sidebar">
             <div class="user-panel mt-3 pb-3 mb-3"><div class="info text-white">{{ auth()->user()->name }}</div></div>
