@@ -36,6 +36,8 @@ Numeracja tematu 05 jest zgodna z materiałami prowadzącego. Nie przypisano zad
 
 ## Gdzie jest kod?
 
+[Kopia przykładowych danych i instrukcja importu w phpMyAdmin](baza/instrukcja_importu.txt) pozwalają przenieść na uczelnię te same książki i przykładowego użytkownika. Najpierw wykonaj migracje, potem import SQL zamiast zwykłego seedera.
+
 | Lokalizacja w repozytorium | Zastosowanie | Katalog na komputerze |
 |---|---|---|
 | [pierwszy_skrypt/](pierwszy_skrypt/) | Pierwszy skrypt PHP | `C:\xampp\htdocs\pierwszy_skrypt` |

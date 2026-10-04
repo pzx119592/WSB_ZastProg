@@ -30,4 +30,6 @@ Funkcja `check_book_title` korzysta z `DB::table('books')->where(...)`. Jeśli k
 
 ## Baza na komputerze uczelnianym
 
+Jeżeli chcesz pokazać dokładnie te same dane, użyj [kopii SQL i instrukcji importu](../../../baza/instrukcja_importu.txt): migracje odtwarzają wszystkie tabele, a import wypełnia `user` i `books` przykładowymi rekordami. Import zastępuje krok generowania książek zwykłym seederem.
+
 Włącz MySQL/MariaDB w XAMPP, utwórz bazę `project` w phpMyAdmin, skopiuj `.env.example` do `.env` i dostosuj dane połączenia. `php artisan migrate` odtworzy tabele, a seeder wygeneruje książki. Instrukcje obu zadań zawierają komplet poleceń.

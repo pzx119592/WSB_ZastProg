@@ -62,3 +62,8 @@ Nie przesyłamy na GitHub lokalnego .env ani całej bazy; migrate i seed odtwarz
 SPRAWDZENIE
 php artisan test
 Testy używają osobnej bazy SQLite w pamięci i nie modyfikują bazy project.
+
+OPCJONALNIE: TE SAME DANE CO W DOMU
+W repozytorium znajdziesz baza/instrukcja_importu.txt oraz kopie SQL.
+Po migrate w nowej bazie zaimportuj SQL zamiast zwyklego seedera.
+To odtworzy przykladowego uzytkownika i te same 11 ksiazek.

@@ -1,0 +1,55 @@
+BAZA project — CO JEST WAŻNE I JAK PRZENIEŚĆ DANE
+
+W phpMyAdmin wybierz bazę project, potem tabelę i zakładkę Przeglądaj.
+user: Twoje ćwiczenie 7A — imię, nazwisko, urodziny i czas utworzenia.
+books: ćwiczenie 7B — tytuły i autorzy książek.
+users: domyślna tabela kont Laravel, inna niż user; obecne ćwiczenie jej nie używa.
+migrations: spis wykonanych migracji, potrzebny Laravelowi do aktualizacji struktury.
+sessions: sesje przeglądarki; umożliwiają między innymi działanie formularzy i CSRF.
+cache, cache_locks: pamięć podręczna; /check korzysta z niej do zapamiętania tytułu.
+jobs, job_batches, failed_jobs: obsługa zadań w tle.
+password_reset_tokens: tokeny resetowania hasła dla mechanizmów logowania.
+Nie usuwaj tabel technicznych tylko dlatego, że nie używasz ich bezpośrednio.
+
+CO ZAWIERA KOPIA
+temat_07_dane_przykladowe.sql: dane jednej przykładowej Anny Nowak oraz 11 książek.
+To kopia danych do prezentacji ćwiczeń, nie pełny backup całej bazy.
+Strukturę WSZYSTKICH tabel odtwarzają migracje w projekcie Laravel.
+Pozostałe wpisy użytkowników, konta, sesje i cache nie są publikowane.
+Plik jest zapisany w UTF-8, zachowuje polskie znaki i identyfikatory książek.
+
+IMPORT NA UCZELNI — WYBIERZ TEN WARIANT ZAMIAST GENEROWANIA DANYCH SEEDEREM
+1. Pobierz całe repozytorium: https://github.com/pzx119592/WSB_ZastProg
+   Code -> Download ZIP. Zachowaj folder baza oraz folder project_1.
+2. Przygotuj XAMPP, Composer i project_1 według instrukcji ćwiczenia 7A.
+3. Włącz MySQL oraz Apache w XAMPP. Otwórz http://localhost/phpmyadmin.
+4. Utwórz NOWĄ, pustą bazę project z kodowaniem utf8mb4_unicode_ci.
+   Jeśli project już zawiera Twoje dane, użyj innej nowej nazwy, np. project_pokaz,
+   i ustaw tę samą nazwę jako DB_DATABASE w lokalnym .env.
+   Nie zastępuj ani nie usuwaj istniejącej bazy z własnymi danymi.
+5. Po composer install, przygotowaniu .env i APP_KEY wykonaj w project_1:
+   php artisan config:clear
+   php artisan migrate
+   To utworzy tabele ćwiczeń i tabele techniczne Laravel.
+6. W phpMyAdmin kliknij nazwę tej bazy -> Import -> Wybierz plik:
+   baza/temat_07_dane_przykladowe.sql. Format SQL, kodowanie UTF-8, wykonaj import.
+   Importuj tylko raz, do pustych tabel user i books. Ponowny import do tych
+   samych tabel spowoduje błąd duplikatów id; nie trzeba wtedy usuwać danych.
+7. Po imporcie NIE uruchamiaj zwykłego BooksTableSeeder, jeśli chcesz zachować
+   dokładnie te 11 książek. Zwykły seeder dodaje kolejne losowe rekordy.
+   W terminalu wykonaj:
+   php artisan db:seed --class=BooksTableSeeder --check="The Catcher in the Rye"
+   php artisan serve --host=127.0.0.1 --port=8000
+8. Pokaż /user-records, /books i /check pod http://127.0.0.1:8000.
+   Sprawdź też w phpMyAdmin -> Przeglądaj: user ma 1 rekord, books ma 11.
+
+ALTERNATYWA BEZ KOPII SQL
+Po migrate uruchom zwykły BooksTableSeeder i dodaj użytkownika formularzem.
+To też działa, ale losowe książki mogą być inne niż na komputerze domowym.
+
+WŁASNY PEŁNY BACKUP, DO ZACHOWANIA LOKALNIE
+phpMyAdmin -> wybierz bazę -> Eksport -> Szybki -> SQL -> Eksportuj.
+Taki plik zawiera strukturę i dane wszystkich tabel: zachowaj go lokalnie.
+Przed publikacją jakiegokolwiek SQL sprawdź, czy nie zawiera danych osobowych,
+kont, tokenów lub sesji. Publiczna kopia w tym repozytorium zawiera tylko
+wybrane dane przykładowe opisane powyżej.
