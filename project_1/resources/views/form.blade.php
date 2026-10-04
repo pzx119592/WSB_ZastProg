@@ -10,7 +10,7 @@
     <main class="form-container">
         <h1>Dane z formularza</h1>
         <dl class="form-result">
-            <dt>Imię</dt><dd>{{ $data['name'] }}</dd>
+            <dt>Imię</dt><dd>{{ $data['name'] ?? 'Nie podano' }}</dd>
             <dt>Adres e-mail</dt><dd>{{ $data['email'] }}</dd>
             <dt>Hasło</dt><dd>{{ str_repeat('•', mb_strlen($data['password'])) }}</dd>
             <dt>Płeć</dt><dd>{{ $data['gender'] === 'male' ? 'Mężczyzna' : 'Kobieta' }}</dd>

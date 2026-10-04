@@ -94,6 +94,14 @@ a:focus-visible {
     margin: 6px 0 0;
 }
 
+.form-help {
+    max-width: 320px;
+    margin: 6px 0 0;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #475569;
+}
+
 .form-result dt {
     font-weight: bold;
 }

@@ -32,18 +32,21 @@ Nie otwieraj /form bezpośrednio z paska adresu — byłoby to żądanie GET, a 
 PRZYKŁADOWE DANE
 Imię: Anna
 E-mail: anna@example.com
-Hasło: haslo123
+Hasło: Haslo123!
 Płeć: Kobieta
 Kliknij Zatwierdź.
 
 OCZEKIWANY WYNIK
 Widok „Dane z formularza” pokaże imię Anna, e-mail anna@example.com,
-płeć Kobieta oraz osiem kropek zamiast znaków hasła.
+płeć Kobieta oraz dziewięć kropek zamiast znaków hasła.
 Dane są tablicą w kontrolerze i nie są zapisywane jako użytkownik w bazie danych.
 
 WALIDACJA
-Pola są wymagane. Imię: 2–100 znaków. E-mail: poprawny format, maks. 254 znaki.
-Hasło: 5–100 znaków. Płeć: jedna z dwóch opcji.
+Aktualne reguły zostały rozszerzone w ćwiczeniu 6:
+Imię jest opcjonalne; jeśli je podasz, ma mieć 3–20 znaków.
+E-mail jest wymagany, ma mieć 3–20 znaków i poprawny format.
+Hasło jest wymagane, ma mieć 8–30 znaków, małą i dużą literę, cyfrę i znak specjalny.
+Płeć: jedna z dwóch opcji.
 Przeglądarka może zatrzymać błędne dane przed wysłaniem. Kontroler sprawdza je ponownie.
 Po błędzie walidacji serwera formularz pokaże polskie komunikaty i zachowa imię,
 e-mail i wybraną płeć; hasło trzeba wpisać ponownie.
@@ -62,3 +65,8 @@ SPRAWDZENIE
 php artisan route:list --except-vendor
 php artisan test
 Token CSRF jest wymagany — POST bez tokena zwraca HTTP 419.
+
+WERSJA SPRZED ĆWICZENIA 6
+https://github.com/pzx119592/WSB_ZastProg/tree/ac9bdd8/project_1
+ZIP: https://github.com/pzx119592/WSB_ZastProg/archive/ac9bdd8.zip
+Ta wersja ma pierwotną, prostszą walidację z ćwiczenia 5.

@@ -24,8 +24,9 @@
 | Lekcja | Temat | Ćwiczenie | Zadanie / instrukcja | Wynik do pokazania po uruchomieniu |
 |---|---|---|---|---|
 | 02 | 05 | 5 | [Formularz użytkownika, POST i CSRF](lekcje/lekcja_02/temat_05/cwiczenie_05.txt) | `http://127.0.0.1:8000/userform` — po zatwierdzeniu dane w widoku wynikowym |
+| 02 | 06 | 6 | [Walidacja pól formularza](lekcje/lekcja_02/temat_06/cwiczenie_06.txt) | `http://127.0.0.1:8000/userform` — ograniczenia pól i hasła |
 
-[Opis lekcji 02](lekcje/lekcja_02/README.md) · [Temat 05 — Wykorzystanie formularzy](lekcje/lekcja_02/temat_05/README.md)
+[Opis lekcji 02](lekcje/lekcja_02/README.md) · [Temat 05 — Wykorzystanie formularzy](lekcje/lekcja_02/temat_05/README.md) · [Temat 06 — Walidacja danych](lekcje/lekcja_02/temat_06/README.md)
 
 Numeracja tematu 05 jest zgodna z materiałami prowadzącego. Nie przypisano zadań do tematu 04.
 
@@ -35,7 +36,7 @@ Numeracja tematu 05 jest zgodna z materiałami prowadzącego. Nie przypisano zad
 |---|---|---|
 | [pierwszy_skrypt/](pierwszy_skrypt/) | Pierwszy skrypt PHP | `C:\xampp\htdocs\pierwszy_skrypt` |
 | [index.php](index.php) w głównym katalogu | Prosty projekt z zadania GitHub | `C:\xampp\htdocs\git\project1` |
-| [project_1/](project_1/) | Wspólny projekt Laravel 12: tematy 02, 03 i 05 | `C:\xampp\htdocs\project_1` |
+| [project_1/](project_1/) | Wspólny projekt Laravel 12: tematy 02, 03, 05 i 06 | `C:\xampp\htdocs\project_1` |
 | [xampp/](xampp/) | Instrukcja środowiska | Instalacja XAMPP |
 | [lekcje/](lekcje/) | Spis i instrukcje wszystkich zadań | Dokumentacja |
 

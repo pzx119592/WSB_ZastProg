@@ -8,6 +8,7 @@ Projekt z przedmiotu **Programowanie w zastosowaniach**. Laravel Framework 12.69
 - [Lekcja 01, temat 03 — routing, widoki i kontroler](../lekcje/lekcja_01/temat_03/README.md).
 - [Temat 03, ćwiczenie 4 — pojemność prostopadłościanu](../lekcje/lekcja_01/temat_03/cwiczenie_04.txt).
 - [Lekcja 02, temat 05 — formularz użytkownika](../lekcje/lekcja_02/temat_05/README.md).
+- [Lekcja 02, temat 06 — walidacja danych](../lekcje/lekcja_02/temat_06/README.md).
 
 ## Uruchomienie
 

@@ -1,0 +1,65 @@
+Lekcja 02 | Temat 06 | Ćwiczenie 6 — walidacja danych (ex6.pdf)
+
+POBRANIE I PIERWSZE URUCHOMIENIE NA UCZELNI
+1. Wymagane: XAMPP z PHP 8.2 lub nowszym, Composer; zalecany VS Code.
+2. Otwórz https://github.com/pzx119592/WSB_ZastProg
+   Kliknij Code -> Download ZIP i rozpakuj archiwum.
+3. Skopiuj folder project_1 do C:\xampp\htdocs. Zachowaj kopię istniejącego projektu.
+4. W PowerShell wykonaj:
+
+cd C:\xampp\htdocs\project_1
+$env:Path = "C:\xampp\php;" + $env:Path
+composer install
+if (!(Test-Path .env)) { Copy-Item .env.example .env }
+php artisan key:generate
+if (!(Test-Path database\database.sqlite)) { New-Item database\database.sqlite -ItemType File | Out-Null }
+php artisan migrate
+php artisan serve --host=127.0.0.1 --port=8000
+
+Jeśli projekt jest już przygotowany, wystarczy wejść do jego folderu i uruchomić Artisan.
+Pozostaw terminal otwarty; Ctrl+C zatrzymuje serwer.
+Przy zajętym porcie użyj --port=8001 i zmień port w adresach.
+Jeśli XAMPP ma inną lokalizację, dostosuj ścieżki.
+Do uruchomienia przez Artisan nie trzeba uruchamiać Apache, MariaDB ani npm.
+
+ADRESY DO POKAZANIA
+http://127.0.0.1:8000/userform
+Przez Apache na swoim komputerze: http://localhost/project_1/public/userform
+Wynik pojawia się po zatwierdzeniu formularza metodą POST, pod adresem /form.
+
+WYMAGANIA ĆWICZENIA
+Imię: pole text, opcjonalne. Jeśli podane: minimum 3, maksimum 20 znaków.
+E-mail: pole email, wymagane. Minimum 3, maksimum 20 znaków i poprawny format.
+Hasło: pole password, wymagane. Minimum 8, maksimum 30 znaków.
+Musi zawierać małą literę, dużą literę, cyfrę i znak specjalny.
+Płeć: tylko jedna opcja radio; oba przyciski mają wspólne name="gender".
+
+JAK POKAZAĆ DZIAŁANIE
+1. Wpisz Anna, anna@example.com, Haslo123! i wybierz Kobieta.
+   Zatwierdź: wynik pokaże dane i zamaskowane hasło.
+2. Wróć do formularza. Zostaw imię puste, pozostałe dane poprawne.
+   Zatwierdź: formularz zostanie przyjęty, a imię w wyniku to „Nie podano”.
+3. Wróć. Spróbuj wpisać imię An — za krótkie.
+4. Spróbuj wysłać pusty lub niepoprawny e-mail — zostanie odrzucony.
+5. Spróbuj hasła Haslo123 — nie ma znaku specjalnego.
+   Spróbuj haslo123! — nie ma dużej litery.
+   Spróbuj Hasloabc! — nie ma cyfry.
+6. Przełącz wybór płci: zaznaczenie jednej opcji odznacza drugą.
+
+Przeglądarka sprawdza pola jeszcze przed wysłaniem (required, minlength,
+maxlength, email, pattern). maxlength może uniemożliwić wpisanie zbyt długiej wartości.
+Kontroler sprawdza wszystkie warunki ponownie, również dla ręcznie wysłanego POST.
+Komunikaty Laravel są po polsku. Natywne komunikaty zależą od języka przeglądarki.
+Po błędzie serwera imię, e-mail i płeć są zachowane; hasło trzeba wpisać ponownie.
+
+PLIKI DO OTWARCIA W VS CODE (w folderze project_1)
+resources/views/userform.blade.php — typy pól i ograniczenia HTML, @csrf.
+app/Http/Controllers/Form.php — nullable, required, min, max, email, regex, in.
+resources/views/form.blade.php — wynik i obsługa niepodanego imienia.
+routes/web.php — GET /userform i POST /form.
+tests/Feature/UserFormTest.php — testy ograniczeń, długości i opcjonalnego imienia.
+
+SPRAWDZENIE
+php artisan test
+Testy obejmują puste imię, graniczne długości, brak każdego składnika hasła,
+niepoprawny e-mail i próbę przesłania dwóch wartości płci jednocześnie.

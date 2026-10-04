@@ -14,7 +14,7 @@
             <div>
                 <label class="visually-hidden" for="name">Imię</label>
                 <input id="name" name="name" type="text" placeholder="Podaj swoje imię"
-                       value="{{ old('name') }}" required minlength="2" maxlength="100" autocomplete="given-name">
+                       value="{{ old('name') }}" minlength="3" maxlength="20" autocomplete="given-name">
                 @error('name')
                     <p class="form-error" role="alert">{{ $message }}</p>
                 @enderror
@@ -22,7 +22,7 @@
             <div>
                 <label class="visually-hidden" for="email">Adres e-mail</label>
                 <input id="email" name="email" type="email" placeholder="Podaj swój adres @"
-                       value="{{ old('email') }}" required maxlength="254" autocomplete="email">
+                       value="{{ old('email') }}" required minlength="3" maxlength="20" autocomplete="email">
                 @error('email')
                     <p class="form-error" role="alert">{{ $message }}</p>
                 @enderror
@@ -30,7 +30,11 @@
             <div>
                 <label class="visually-hidden" for="password">Hasło</label>
                 <input id="password" name="password" type="password" placeholder="Podaj hasło"
-                       required minlength="5" maxlength="100" autocomplete="new-password">
+                       required minlength="8" maxlength="30" autocomplete="new-password"
+                       pattern="(?=.*\p{Ll})(?=.*\p{Lu})(?=.*\p{N})(?=.*[\p{P}\p{S}]).*"
+                       title="Hasło musi zawierać małą literę, dużą literę, cyfrę i znak specjalny."
+                       aria-describedby="password-help">
+                <p class="form-help" id="password-help">8–30 znaków: mała i duża litera, cyfra oraz znak specjalny.</p>
                 @error('password')
                     <p class="form-error" role="alert">{{ $message }}</p>
                 @enderror
