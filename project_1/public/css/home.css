@@ -1,0 +1,45 @@
+/* Style wyłącznie strony głównej — wcześniejsze widoki ćwiczeń zachowują wygląd. */
+.course-home {
+    background: #f3f5fa;
+    color: #17243b;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+.course-shell { max-width: 1160px; margin: 0 auto; padding: 40px 28px 24px; }
+.course-brand { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.course-brand img { width: 190px; height: auto; }
+.course-version { padding: 5px 12px; border: 1px solid #dce3ef; border-radius: 20px; font-size: 12px; color: #59667d; }
+.course-eyebrow { margin: 36px 0 10px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: #4d63a3; }
+.course-header h1 { margin: 0; font-size: clamp(28px, 4vw, 40px); line-height: 1.2; letter-spacing: -.035em; }
+.course-intro { margin: 12px 0 0; color: #59667d; font-size: 16px; }
+.course-home .topic-shortcuts { margin: 24px 0 30px; gap: 8px; }
+.topic-shortcuts a { border: 1px solid #dce3ef; padding: 6px 14px; border-radius: 8px; color: #465873; text-decoration: none; font-size: 13px; background: #fff; }
+.topic-shortcuts a:hover { color: #244ab6; border-color: #8ba4e2; background: #eef3ff; }
+.topic-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.topic-card { background: #fff; border: 1px solid #e0e6ef; border-radius: 14px; padding: 24px; scroll-margin-top: 20px; box-shadow: 0 3px 12px #17243b04; }
+.topic-card-wide { grid-column: 1 / -1; }
+.topic-heading { display: flex; align-items: flex-start; gap: 14px; }
+.topic-number { flex-shrink: 0; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 10px; background: #edf2ff; color: #3458b5; font-size: 16px; font-weight: 750; }
+.topic-heading h2 { font-size: 19px; line-height: 1.35; margin: 0 0 4px; letter-spacing: -.02em; }
+.topic-heading p { font-size: 13px; color: #657189; margin: 0; }
+.course-home .exercise-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(235px, 1fr)); gap: 10px; margin-top: 20px; }
+.exercise-link { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; border: 1px solid #e5eaf2; border-radius: 9px; padding: 13px 15px; color: #253855; text-decoration: none; background: #fafbfe; }
+.exercise-link strong { font-size: 14px; font-weight: 650; line-height: 1.4; display: block; }
+.exercise-description { display: block; font-size: 12px; line-height: 1.5; color: #657189; margin-top: 5px; }
+.exercise-arrow { color: #7c8ca9; font-size: 20px; line-height: 1; flex-shrink: 0; }
+.exercise-link:hover { background: #eef3ff; border-color: #b9c9ec; color: #244ab6; }
+.exercise-link:hover .exercise-arrow { color: #244ab6; }
+.course-footer { text-align: center; margin-top: 28px; color: #728099; font-size: 12px; }
+.home-skip { position: absolute; top: -80px; left: 16px; padding: 10px 16px; background: #fff; border: 2px solid #3458b5; z-index: 10; }
+.home-skip:focus { top: 16px; }
+@media (min-width: 641px) {
+    .course-home .topic-card-wide .exercise-links { grid-template-columns: repeat(var(--link-columns), minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+    .course-shell { padding: 24px 16px; }
+    .course-brand img { width: 160px; }
+    .course-eyebrow { margin-top: 28px; }
+    .topic-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+    .topic-card { padding: 18px; }
+    .topic-heading h2 { font-size: 17px; }
+    .course-home .exercise-links { grid-template-columns: minmax(0, 1fr); }
+}
