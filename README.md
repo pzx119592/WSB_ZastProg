@@ -6,15 +6,15 @@
 
 | Lekcja | Temat | Ćwiczenie | Zadanie / instrukcja | Wynik do pokazania po uruchomieniu |
 |---|---|---|---|---|
-| 01 | 01 | 1 | [Instalacja XAMPP](lekcje/lekcja_01/temat_01/cwiczenie_01.txt) | `http://localhost` |
-| 01 | 01 | 2 | [Apache i MariaDB](lekcje/lekcja_01/temat_01/cwiczenie_02.txt) | `http://127.0.0.1/phpmyadmin` |
-| 01 | 01 | 3 | [Pierwszy skrypt PHP](lekcje/lekcja_01/temat_01/cwiczenie_03.txt) | `http://localhost/pierwszy_skrypt/` |
+| 01 | 01 | 1 | [Instalacja XAMPP](lekcje/lekcja_01/temat_01/cwiczenie_01.txt) | `http://localhost` — strona startowa XAMPP |
+| 01 | 01 | 2 | [Apache i MariaDB](lekcje/lekcja_01/temat_01/cwiczenie_02.txt) | `http://127.0.0.1/phpmyadmin` — panel zarządzania bazami |
+| 01 | 01 | 3 | [Pierwszy skrypt PHP](lekcje/lekcja_01/temat_01/cwiczenie_03.txt) | `http://localhost/pierwszy_skrypt/` — „Witaj w moim pierwszym projekcie!” |
 | 01 | 01 | GitHub | [Umieszczenie projektu na GitHubie](lekcje/lekcja_01/temat_01/zadanie_github.txt) | Repozytorium i historia Git |
 | 01 | 02 | 1 | [Sprawdzenie środowiska XAMPP](lekcje/lekcja_01/temat_02/cwiczenie_01.txt) | XAMPP i phpMyAdmin |
 | 01 | 02 | 2 | [Composer i utworzenie Laravel 12](lekcje/lekcja_01/temat_02/cwiczenie_02.txt) | `php artisan --version`, struktura projektu |
-| 01 | 03 | 1 | [Własny widok i CSS](lekcje/lekcja_01/temat_03/cwiczenie_01.txt) | `http://127.0.0.1:8000/` |
-| 01 | 03 | 2 | [Routing i kontroler](lekcje/lekcja_01/temat_03/cwiczenie_02.txt) | `http://127.0.0.1:8000/witaj`, `/test` |
-| 01 | 03 | 3 | [Parametry dynamiczne i opcjonalne](lekcje/lekcja_01/temat_03/cwiczenie_03.txt) | `http://127.0.0.1:8000/users/42`, `/photo` |
+| 01 | 03 | 1 | [Własny widok i CSS](lekcje/lekcja_01/temat_03/cwiczenie_01.txt) | `http://127.0.0.1:8000/` — własna strona główna z CSS |
+| 01 | 03 | 2 | [Routing i kontroler](lekcje/lekcja_01/temat_03/cwiczenie_02.txt) | `http://127.0.0.1:8000/witaj` — „Witaj w aplikacji!”<br>`http://127.0.0.1:8000/test` — odpowiedź kontrolera |
+| 01 | 03 | 3 | [Parametry dynamiczne i opcjonalne](lekcje/lekcja_01/temat_03/cwiczenie_03.txt) | `http://127.0.0.1:8000/users/42` — identyfikator 42<br>`http://127.0.0.1:8000/photo/Krakow/Dluga` — miasto i ulica z adresu<br>`http://127.0.0.1:8000/photo` — brak miasta, ulica main |
 | 01 | 03 | 4 | [Pojemność prostopadłościanu](lekcje/lekcja_01/temat_03/cwiczenie_04.txt) | `http://127.0.0.1:8000/12/32/321` — **123264 m3** |
 
 [Opis lekcji 01](lekcje/lekcja_01/README.md) · [Temat 01](lekcje/lekcja_01/temat_01/README.md) · [Temat 02](lekcje/lekcja_01/temat_02/README.md) · [Temat 03](lekcje/lekcja_01/temat_03/README.md)
@@ -25,11 +25,11 @@
 |---|---|---|---|---|
 | 02 | 05 | 5 | [Formularz użytkownika, POST i CSRF](lekcje/lekcja_02/temat_05/cwiczenie_05.txt) | `http://127.0.0.1:8000/userform` — po zatwierdzeniu dane w widoku wynikowym |
 | 02 | 06 | 6 | [Walidacja pól formularza](lekcje/lekcja_02/temat_06/cwiczenie_06.txt) | `http://127.0.0.1:8000/userform` — ograniczenia pól i hasła |
-| 02 | 07 | 7A | [Dodawanie użytkowników do bazy](lekcje/lekcja_02/temat_07/cwiczenie_07a_uzytkownicy.txt) | `http://127.0.0.1:8000/adduser` — zapis i wynik JSON |
-| 02 | 07 | 7B | [Faker i sprawdzanie książek](lekcje/lekcja_02/temat_07/cwiczenie_07b_faker.txt) | `http://127.0.0.1:8000/books`, `/check` |
-| 02 | 08 | 8 | [Autoryzacja i panel AdminLTE 3](lekcje/lekcja_02/temat_08/cwiczenie_08.txt) | `/register`, `/login`, `/home`, `/panel/formularz` |
-| 02 | 09 | 9A — e24 | [Model Book i lista książek](lekcje/lekcja_02/temat_09/cwiczenie_09a_e24.txt) | `/temat-9/books` — 3 książki |
-| 02 | 09 | 9B — e24_v1 | [Formularz i model Test](lekcje/lekcja_02/temat_09/cwiczenie_09b_e24_v1.txt) | `/temat-9/dbTestTableForm`, `/temat-9/ModelTestController` |
+| 02 | 07 | 7A | [Dodawanie użytkowników do bazy](lekcje/lekcja_02/temat_07/cwiczenie_07a_uzytkownicy.txt) | `http://127.0.0.1:8000/adduser` — formularz, zapis i wynik JSON<br>`http://127.0.0.1:8000/user-records` — tabela zapisanych użytkowników |
+| 02 | 07 | 7B | [Faker i sprawdzanie książek](lekcje/lekcja_02/temat_07/cwiczenie_07b_faker.txt) | `http://127.0.0.1:8000/books` — tabela tytułów i autorów z Fakera<br>`http://127.0.0.1:8000/check` — komunikat o istniejącej książce i link |
+| 02 | 08 | 8 | [Autoryzacja i panel AdminLTE 3](lekcje/lekcja_02/temat_08/cwiczenie_08.txt) | `http://127.0.0.1:8000/register` — rejestracja konta<br>`http://127.0.0.1:8000/login` — logowanie<br>`http://127.0.0.1:8000/home` — panel po zalogowaniu i menu Logout<br>`http://127.0.0.1:8000/panel/formularz` — formularz imienia i nazwiska |
+| 02 | 09 | 9A — e24 | [Model Book i lista książek](lekcje/lekcja_02/temat_09/cwiczenie_09a_e24.txt) | `http://127.0.0.1:8000/temat-9/books` — lista 3 książek pobranych przez model Book |
+| 02 | 09 | 9B — e24_v1 | [Formularz i model Test](lekcje/lekcja_02/temat_09/cwiczenie_09b_e24_v1.txt) | `http://127.0.0.1:8000/temat-9/dbTestTableForm` — formularz zapisu do tabeli tests<br>`http://127.0.0.1:8000/temat-9/ModelTestController` — lista zapisanych osób i ich danych |
 
 [Opis lekcji 02](lekcje/lekcja_02/README.md) · [Temat 05 — Wykorzystanie formularzy](lekcje/lekcja_02/temat_05/README.md) · [Temat 06 — Walidacja danych](lekcje/lekcja_02/temat_06/README.md)
 
@@ -72,6 +72,8 @@ Aktualne pliki: **Code → Download ZIP**. Do uruchomienia Laravel skopiuj folde
 Plik `.env`, biblioteki `vendor` i lokalna baza MariaDB powstają na każdym komputerze zgodnie z instrukcją. Zachowane starsze wersje mogą korzystać z SQLite — stosuj instrukcję właściwą dla pobranej wersji.
 
 ## Organizacja następnych zajęć
+
+W kolumnie „Wynik do pokazania po uruchomieniu” podajemy **pełne adresy do skopiowania i krótki opis wyniku**. Przy kilku adresach każdy ma własny opis i osobny wiersz w komórce tabeli.
 
 **Zachowujemy wcześniejsze ćwiczenia na ich etapie:** kolejne zadanie nie zastępuje istniejących adresów, widoków ani tabel. Przy kolizji nazw nowe zadanie dostaje prefiks tematu, np. `/temat-9/books` i `books_temat9`; wcześniejsze `/books` i `books` nadal pokazują temat 7. Każda wersja ćwiczenia otrzymuje osobną instrukcję.
 
