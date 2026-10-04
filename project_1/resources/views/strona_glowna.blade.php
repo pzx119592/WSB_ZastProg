@@ -17,7 +17,7 @@
             <a href="{{ url('/photo/Krakow/Dluga') }}">Zdjęcie z miasta</a>
             <a href="{{ url('/photo') }}">Zdjęcie bez miasta</a>
             <a href="{{ url('/12/32/321') }}">Pojemność bryły</a>
-            <a href="{{ route('userform') }}">Formularz użytkownika — lekcja 2</a>
+            <a href="{{ route('userform') }}">Formularz użytkownika</a>
         </nav>
     </main>
 </body>
