@@ -1,0 +1,57 @@
+Temat 3 — Routing, Widoki i Kontrolery, ćwiczenia 1–4
+
+POBRANIE I URUCHOMIENIE NA UCZELNI
+1. Otwórz https://github.com/pzx119592/WSB_ZastProg
+2. Kliknij Code -> Download ZIP, rozpakuj i skopiuj folder project_1 do C:\xampp\htdocs.
+   Zachowaj kopię istniejącego projektu przed zastąpieniem.
+3. Wymagane: XAMPP z PHP 8.2 lub nowszym, Composer; zalecany VS Code.
+4. W PowerShell wykonaj przy pierwszym uruchomieniu:
+
+cd C:\xampp\htdocs\project_1
+$env:Path = "C:\xampp\php;" + $env:Path
+composer install
+if (!(Test-Path .env)) { Copy-Item .env.example .env }
+php artisan key:generate
+if (!(Test-Path database\database.sqlite)) { New-Item database\database.sqlite -ItemType File | Out-Null }
+php artisan migrate
+php artisan serve --host=127.0.0.1 --port=8000
+
+Otwórz http://127.0.0.1:8000. Terminal musi pozostać otwarty; Ctrl+C zatrzymuje serwer.
+Do kolejnego uruchomienia wystarczy cd do projektu i php artisan serve.
+Jeśli XAMPP ma inną lokalizację, dostosuj ścieżki.
+Przy zajętym porcie użyj --port=8001 i zmień port w adresach poniżej.
+Apache, MariaDB i npm nie są wymagane do tych ćwiczeń; używamy Artisan i SQLite.
+
+CO POKAZAĆ PROWADZĄCEMU
+Ćwiczenie 1: http://127.0.0.1:8000/
+Własna strona HTML5 z nagłówkiem, opisem, nawigacją i CSS z public/css/style.css.
+Kod: resources/views/strona_glowna.blade.php i główna trasa w routes/web.php.
+
+Ćwiczenie 2: http://127.0.0.1:8000/witaj oraz http://127.0.0.1:8000/test
+Oba adresy pokazują: Witaj w aplikacji!
+/witaj korzysta z funkcji anonimowej, /test z TestController::index.
+Kontroler wygenerowano poleceniem php artisan make:controller TestController.
+Kod: routes/web.php oraz app/Http/Controllers/TestController.php.
+
+Ćwiczenie 3: http://127.0.0.1:8000/users/42
+Wynik: Identyfikator użytkownika: 42.
+http://127.0.0.1:8000/photo/Krakow/Dluga — miasto Krakow, ulica Dluga.
+http://127.0.0.1:8000/photo/Krakow — miasto Krakow, domyślna ulica main.
+http://127.0.0.1:8000/photo — brak miasta, domyślna ulica main.
+Wybrano wersję Blade. Warunek @if (is_null($city)) znajduje się w photo.blade.php.
+Zmienne są wyświetlane przez {{ ... }}, co zamienia znaczniki HTML na tekst.
+Dane z adresu nie są automatycznie odmieniane ani transliterowane.
+Aby zobaczyć dokładnie „z Krakowa ... na ulicy Długa”, otwórz:
+http://127.0.0.1:8000/photo/Krakowa/D%C5%82uga
+Kod: routes/web.php i resources/views/photo.blade.php.
+
+Ćwiczenie 4: http://127.0.0.1:8000/12/32/321
+Żółte tło i niebieski komunikat:
+Prostopadłościan o wymiarach 12 × 32 × 321 ma pojemność 123264 m3.
+Trasa mnoży wysokość, szerokość i głębokość, a wynik przekazuje do widoku.
+Wymiary mogą być nieujemnymi liczbami całkowitymi lub dziesiętnymi (kropka).
+Kod: routes/web.php, resources/views/pojemnosc.blade.php i public/css/style.css.
+
+Lista tras: php artisan route:list --except-vendor
+Testy działania: php artisan test
+Szczegółowa instrukcja środowiska i struktury katalogów: instrukcja.txt.

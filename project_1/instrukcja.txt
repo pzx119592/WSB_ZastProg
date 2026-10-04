@@ -1,4 +1,4 @@
-Temat 2, ćwiczenie 2 — pierwszy projekt Laravel 12
+Temat 2 i temat 3 — projekt Laravel 12
 
 Projekt: project_1. Sprawdzona wersja: Laravel Framework 12.69.3, PHP 8.2.12.
 Repozytorium: https://github.com/pzx119592/WSB_ZastProg
@@ -24,7 +24,7 @@ php artisan migrate
 php artisan --version
 php artisan serve --host=127.0.0.1 --port=8000
 
-Otwórz http://127.0.0.1:8000 — powinna pojawić się strona powitalna Laravel.
+Otwórz http://127.0.0.1:8000 — powinna pojawić się własna strona główna z nawigacją.
 Pozostaw terminal z serwerem otwarty. Ctrl+C zatrzymuje serwer.
 Przy kolejnych uruchomieniach wystarczy wejść do folderu i wykonać php artisan serve.
 Gdy port 8000 jest zajęty, użyj --port=8001 i adresu http://127.0.0.1:8001.
@@ -32,7 +32,7 @@ Jeśli XAMPP ma inną lokalizację, dostosuj ścieżki powyżej.
 
 Projekt korzysta z domyślnego SQLite; plik bazy i tabele powstają lokalnie.
 Przy php artisan serve nie trzeba uruchamiać Apache ani MariaDB.
-Do domyślnej strony powitalnej nie są potrzebne npm ani Node.js.
+Do aktualnych widoków i statycznego CSS nie są potrzebne npm ani Node.js.
 composer install odtwarza wersje z composer.lock; nie używaj composer update.
 Plik .env, baza SQLite i folder vendor nie są przesyłane na GitHub.
 
@@ -45,9 +45,10 @@ bootstrap — uruchamianie frameworka; config — konfiguracja.
 database — migracje, fabryki i seedery; public — publiczny punkt wejścia.
 storage — logi i pliki robocze; tests — testy; vendor — biblioteki Composera.
 
-routes/web.php zawiera trasę GET /, która zwraca view('welcome').
-Adres / wyświetla więc resources/views/welcome.blade.php.
-Na tym etapie trasa korzysta z funkcji anonimowej, bez osobnego kontrolera.
+routes/web.php zawiera trasę GET /, która zwraca view('strona_glowna').
+Adres / wyświetla resources/views/strona_glowna.blade.php.
+Trasa /test wywołuje metodę index w TestController.
+Szczegóły ćwiczeń z tematu 3 są w instrukcja_temat_3.txt.
 
 POLECENIE UŻYTE DO UTWORZENIA PROJEKTU W DOMU
 composer create-project "laravel/laravel:^12.0" project_1
