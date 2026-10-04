@@ -1,0 +1,13 @@
+Lekcja 01 | Temat 01 | Ćwiczenie 2 — uruchomienie XAMPP
+
+1. Na komputerze uczelnianym otwórz XAMPP Control Panel.
+2. Uruchom Apache oraz MySQL (w XAMPP jest to MariaDB).
+3. Sprawdź http://127.0.0.1 i http://127.0.0.1/phpmyadmin.
+   Powinny otworzyć się strona XAMPP i phpMyAdmin.
+4. Jeśli XAMPP nie jest zainstalowany, ustal z prowadzącym możliwość instalacji.
+   Oficjalny instalator: https://www.apachefriends.org
+   Składniki: Apache, PHP, MariaDB/MySQL, phpMyAdmin.
+
+Ćwiczenie dotyczy środowiska; nie ma osobnej aplikacji do pobierania.
+Instrukcję możesz pobrać przez Code -> Download ZIP z:
+https://github.com/pzx119592/WSB_ZastProg

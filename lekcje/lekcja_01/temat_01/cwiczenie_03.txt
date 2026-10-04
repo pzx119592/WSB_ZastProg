@@ -1,0 +1,13 @@
+Lekcja 01 | Temat 01 | Ćwiczenie 3 — pierwszy skrypt PHP
+
+1. Otwórz https://github.com/pzx119592/WSB_ZastProg
+2. Kliknij Code -> Download ZIP i rozpakuj archiwum.
+3. Skopiuj folder pierwszy_skrypt do C:\xampp\htdocs.
+   Zachowaj kopię istniejących plików przed zastąpieniem.
+4. Uruchom Apache w XAMPP Control Panel.
+5. Otwórz http://localhost/pierwszy_skrypt/
+
+Wynik: Witaj w moim pierwszym projekcie!
+Kod do pokazania: C:\xampp\htdocs\pierwszy_skrypt\index.php.
+MariaDB, Composer i Laravel nie są wymagane.
+Jeśli XAMPP ma inną lokalizację, użyj jego folderu htdocs.

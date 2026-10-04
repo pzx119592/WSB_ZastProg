@@ -1,0 +1,23 @@
+Lekcja 01 | Temat 01 | Zadanie GitHub — umieszczenie projektu w repozytorium
+
+Repozytorium: https://github.com/pzx119592/WSB_ZastProg
+Projekt ćwiczenia: index.php w głównym folderze repozytorium.
+
+Jeśli na uczelni jest Git, a folder docelowy jeszcze nie istnieje:
+git clone https://github.com/pzx119592/WSB_ZastProg.git C:\xampp\htdocs\git\project1
+cd C:\xampp\htdocs\git\project1
+git log --oneline
+git remote -v
+git status
+
+Uruchom Apache i otwórz http://localhost/git/project1/
+Wynik: Witaj w moim pierwszym projekcie!
+
+Bez Gita: Code -> Download ZIP, rozpakuj i skopiuj główny index.php
+do C:\xampp\htdocs\git\project1. Nie jest to kopia historii Git.
+Zachowaj kopię istniejącego projektu przed zastąpieniem.
+Nie myl project1 (prosty PHP) z project_1 (Laravel).
+
+Pierwszy commit: b466e62 — Pierwszy commit projektu.
+Do oddania według zadania: link do repozytorium, zrzut lokalnego projektu
+i zrzut terminala z poleceniami Git.

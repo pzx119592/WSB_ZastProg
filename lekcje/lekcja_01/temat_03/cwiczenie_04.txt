@@ -1,0 +1,43 @@
+Lekcja 01 | Temat 03 | Ćwiczenie 4 — Pojemność prostopadłościanu
+
+POBRANIE I PIERWSZE URUCHOMIENIE NA UCZELNI
+1. Wymagane: XAMPP z PHP 8.2 lub nowszym oraz Composer.
+2. Otwórz https://github.com/pzx119592/WSB_ZastProg
+   Kliknij Code -> Download ZIP i rozpakuj archiwum.
+3. Skopiuj folder project_1 do C:\xampp\htdocs.
+   Zachowaj kopię istniejącego projektu przed zastąpieniem.
+4. W PowerShell wykonaj:
+
+cd C:\xampp\htdocs\project_1
+$env:Path = "C:\xampp\php;" + $env:Path
+composer install
+if (!(Test-Path .env)) { Copy-Item .env.example .env }
+php artisan key:generate
+if (!(Test-Path database\database.sqlite)) { New-Item database\database.sqlite -ItemType File | Out-Null }
+php artisan migrate
+php artisan serve --host=127.0.0.1 --port=8000
+
+Przy kolejnym uruchomieniu wystarczy wejść do folderu projektu i uruchomić Artisan.
+Terminal serwera pozostaw otwarty; Ctrl+C zatrzymuje serwer.
+Przy zajętym porcie użyj --port=8001 i odpowiednio zmień adres w przeglądarce.
+Jeśli XAMPP ma inną lokalizację, dostosuj ścieżki.
+Do tych ćwiczeń nie trzeba uruchamiać Apache, MariaDB ani npm.
+
+ADRESY DO POKAZANIA
+http://127.0.0.1:8000/12/32/321
+
+OCZEKIWANY WYNIK
+Żółte tło i niebieski komunikat:
+Prostopadłościan o wymiarach 12 × 32 × 321 ma pojemność 123264 m3.
+
+PLIKI DO OTWARCIA W VS CODE (w folderze project_1)
+routes/web.php
+resources/views/pojemnosc.blade.php
+public/css/style.css
+
+JAK TO DZIAŁA
+Wzór: wysokość × szerokość × głębokość.
+Trasa oblicza wynik i przekazuje go do widoku pojemnosc.
+Możesz zmienić trzy liczby w adresie, np. /1.5/2/3 daje 9 m3.
+
+Lista tras: php artisan route:list --except-vendor
